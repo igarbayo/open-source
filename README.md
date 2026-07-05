@@ -1,26 +1,30 @@
 # open-source
 
-Skill de Claude Code que configura la gobernanza open source completa de un proyecto siguiendo las buenas prácticas de la FSF y la OSI. Resuelve el problema de arrancar (o liberar) un repositorio open source, de **hackathon** o real, sin tener que recordar qué documentos hacen falta, qué debe contener cada uno ni dónde va cada fichero: la skill pregunta qué partes se quieren implementar y genera solo esas, pidiendo únicamente los datos relevantes.
+Skill de Claude Code que configura la gobernanza open source completa de un proyecto siguiendo las buenas prácticas de la FSF y la OSI. Resuelve el problema de arrancar (o liberar) un repositorio open source, de **hackathon** o real.
+
+Evita tener que recordar qué documentos hacen falta, qué debe contener cada uno o dónde va cada fichero. La skill pregunta qué partes se quieren implementar y genera solo esas, pidiendo únicamente los datos relevantes.
 
 ## Características
 
-La skill puede generar, a elección del usuario mediante una encuesta inicial:
+La skill puede generar, a elección del usuario mediante una encuesta inicial, los siguientes artefactos:
 
-- **README.md**: punto de entrada del proyecto: propósito, instalación, ejemplos, troubleshooting.
-- **LICENSE**: licencia OSI (MIT, Apache-2.0, BSD-3-Clause, GPL-3.0, AGPL-3.0) con recomendación guiada.
-- **REUSE.toml**: metadatos de licencia conformes con la especificación REUSE/SPDX.
-- **CONTRIBUTING.md**: guía para contribuidores, incluyendo setup, estilo, commits, tiempos de revisión.
-- **SECURITY.md**: política de seguridad alineada con el EU CRA.
-- **CODE_OF_CONDUCT.md**: código de conducta basado en el Contributor Covenant.
-- **GOVERNANCE.md**: toma de decisiones, roles y resolución de conflictos.
-- **CHANGELOG.md**: historial de cambios en formato Keep a Changelog.
-- **Plantillas de issues y pull requests** en `.github/`.
-- **Workflows de GitHub Actions** en `.github/workflows/` (build, lint, test, seguridad).
-- **Dependabot** en `.github/` para actualizaciones automáticas de dependencias y CVEs.
-- **Conventional commits**: convención de mensajes de commit.
-- **Autenticación de commits con GPG + DCO**.
-- **Git flow y Pull Requests**: flujo de ramas y revisión.
-- **ARCHITECTURE_DECISIONS.md**: registro de decisiones de diseño.
+| Artefacto | Descripción |
+|---|---|
+| **README.md** | Punto de entrada del proyecto: propósito, instalación, ejemplos, troubleshooting. |
+| **LICENSE** | Licencia OSI (MIT, Apache-2.0, BSD-3-Clause, GPL-3.0, AGPL-3.0) con recomendación guiada. |
+| **REUSE.toml** | Metadatos de licencia conformes con la especificación REUSE/SPDX. |
+| **CONTRIBUTING.md** | Guía para contribuidores, incluyendo setup, estilo, commits, tiempos de revisión. |
+| **SECURITY.md** | Política de seguridad alineada con el EU CRA. |
+| **CODE_OF_CONDUCT.md** | Código de conducta basado en el Contributor Covenant. |
+| **GOVERNANCE.md** | Toma de decisiones, roles y resolución de conflictos. |
+| **CHANGELOG.md** | Historial de cambios en formato Keep a Changelog. |
+| **Plantillas de issues y pull requests** | En `.github/`. |
+| **Workflows de GitHub Actions** | En `.github/workflows/` (build, lint, test, seguridad). |
+| **Dependabot** | En `.github/`, para actualizaciones automáticas de dependencias y CVEs. |
+| **Conventional commits** | Convención de mensajes de commit. |
+| **Autenticación de commits con GPG + DCO** | Firma y certificación de origen de los commits. |
+| **Git flow y Pull Requests** | Flujo de ramas y revisión. |
+| **ARCHITECTURE_DECISIONS.md** | Registro de decisiones de diseño. |
 
 Toda la documentación generada está escrita en lenguaje natural, orientada a humanos y con ejemplos.
 
