@@ -7,32 +7,38 @@ description: "Use when setting up open-source governance for a project (repo hac
 
 Todos los documentos estarán escritos en lenguaje natural, y orientados para humanos y no máquinas. Los documentos tendrán ejemplos que faciliten la comprensión a las personas.
 
-La encuesta de opción múltiple se realizará al principio de la ejecución de la SKILL En ella se han de marcar qué partes de la estrategia Open Source se desean implementar:
-- [ ] README.md
-- [ ] LICENSE
-- [ ] REUSE.toml
-- [ ] CONTRIBUTING.md
-- [ ] SECURITY.md
-- [ ] CODE_OF_CONDUCT.md
-- [ ] GOVERNANCE.md
-- [ ] CHANGELOG.md
-- [ ] Plantillas de issues y pull requests en carpeta .github/
-- [ ] Workflow de GitHub Actions en carpeta .github/workflows/
-- [ ] Dependabot en carpeta .github/
-- [ ] Conventional commits
-- [ ] Autenticación de commits con GPG + DCO
-- [ ] Git flow y Pull Requests
-- [ ] ARCHITECTURE_DECISIONS.md
-- [ ] Todo lo anterior
+La encuesta de opción múltiple se realizará al principio de la ejecución de la SKILL. En ella se han de marcar qué partes de la estrategia Open Source se desean implementar.
+
+**Presenta la encuesta como un único mensaje de texto plano con la lista numerada completa (todas las opciones juntas en un solo bloque), NO mediante el selector interactivo de preguntas.** El usuario responderá en un solo mensaje indicando los números que desea (por ejemplo, "1, 2, 5, 12"), un rango ("1-8"), o "todas" para implementarlas todas. No repartas las opciones en grupos ni pestañas temáticas.
+
+1. README.md
+2. LICENSE
+3. REUSE.toml
+4. CONTRIBUTING.md
+5. SECURITY.md
+6. CODE_OF_CONDUCT.md
+7. GOVERNANCE.md
+8. CHANGELOG.md
+9. Plantillas de issues y pull requests en carpeta .github/
+10. Workflow de GitHub Actions en carpeta .github/workflows/
+11. Dependabot en carpeta .github/
+12. Conventional commits
+13. Autenticación de commits con GPG + DCO
+14. Git flow y Pull Requests
+15. ARCHITECTURE_DECISIONS.md
+
+Si el usuario responde "todas" (o equivalente), se marcan las 15 opciones.
 
 Al invocar la SKILL, una vez leído todo el documento y realizada la encuesta descrita anteriormente, se pedirán únicamente los datos relevantes para las opciones marcadas:
 - Idioma en el que se generará toda la documentación (por defecto, inglés): siempre
 - Nombre del proyecto: <PROJECT_NAME>: siempre
 - Licencia elegida, recomendando al usuario licencias Open Source aprobadas por la OSI más comunes: permisivas: MIT, Apache-2.0, BSD-3-Clause; copyleft: GPL-3.0; network copyleft: AGPL-3.0 (el detalle está en references/license.md, que se consulta solo al generar el artefacto): solo si se marcó LICENSE o REUSE.toml
-- Cuánto tiempo se va a tardar en revisar y resolver una contribución: solo si se marcó CONTRIBUTING.md
+- Cuánto tiempo se va a tardar en revisar y resolver una contribución (y disponibilidad de los mantenedores, p. ej. si son estudiantes): solo si se marcó CONTRIBUTING.md o SECURITY.md
 - Nombre del hackathon en el que se ha desarrollado el proyecto, si aplica: <HACKATHON_NAME>: solo si se marcó README.md, CONTRIBUTING.md o ARCHITECTURE_DECISIONS.md
-- Nombre, apellidos y correo electrónico de los mantenedores del proyecto: solo si se marcó CONTRIBUTING.md, CODE_OF_CONDUCT.md, GOVERNANCE.md o SECURITY.md
+- Nombre, apellidos y correo electrónico de los mantenedores del proyecto (sirven también como titular del copyright en las cabeceras SPDX y el hueco `[fullname]` de las plantillas MIT/BSD, y como contacto de seguridad en las plantillas .github): solo si se marcó CONTRIBUTING.md, CODE_OF_CONDUCT.md, GOVERNANCE.md, SECURITY.md, LICENSE, REUSE.toml o Plantillas de issues y pull requests
 - Responsabilidades grupales y reglas de voto para la toma de decisiones, si aplica: solo si se marcó GOVERNANCE.md
+
+El año del copyright (para el hueco `[year]` de las licencias MIT/BSD y las cabeceras `SPDX-FileCopyrightText` de REUSE.toml) no se pregunta: se usa automáticamente el año actual.
 
 ## Enrutado
 
