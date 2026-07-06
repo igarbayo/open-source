@@ -1,5 +1,27 @@
 # LICENSE
 
+> **IMPORTANTE: no generes el texto de la licencia a mano.** Los textos de licencia
+> largos (GPL-3.0, AGPL-3.0, Apache-2.0, etc.) tienen decenas de KB. Si el modelo
+> intenta reproducirlos palabra por palabra en su salida, el filtro de contenido del
+> servidor bloquea la respuesta con `400 Output blocked by content filtering policy`
+> y la generación del artefacto falla. **Descarga siempre el texto desde la fuente
+> canónica** para que el fichero sea idéntico byte a byte al oficial:
+>
+> ```bash
+> mkdir -p LICENSES
+> # Sustituye <ID> y la URL por la licencia elegida:
+> #   MIT           -> https://raw.githubusercontent.com/spdx/license-list-data/main/text/MIT.txt
+> #   Apache-2.0    -> https://www.apache.org/licenses/LICENSE-2.0.txt
+> #   BSD-3-Clause  -> https://raw.githubusercontent.com/spdx/license-list-data/main/text/BSD-3-Clause.txt
+> #   GPL-3.0       -> https://www.gnu.org/licenses/gpl-3.0.txt
+> #   AGPL-3.0      -> https://www.gnu.org/licenses/agpl-3.0.txt
+> curl -sSL <URL> -o LICENSE
+> cp LICENSE LICENSES/<ID>.txt
+> ```
+>
+> Para MIT/BSD (que llevan huecos `[year]`/`[fullname]`) descarga la plantilla y luego
+> rellena solo esos campos con Edit; el resto del texto no se teclea nunca a mano.
+
 Se incluye el fichero de la licencia en la raíz del repositorio y también en la carpeta LICENSES. En la carpeta, tiene formato .txt. También se incluirá en la carpeta LICENSES/ cualquier otra cláusula adicional que sea necesaria para el software o el tipo de licencia, como BSD-3-Clause.txt.
 
 Se debe tener en cuenta:
