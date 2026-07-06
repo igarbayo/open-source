@@ -30,9 +30,19 @@ La encuesta de opción múltiple se realizará al principio de la ejecución de 
 Si el usuario responde "todas" (o equivalente), se marcan las 15 opciones.
 
 Al invocar la SKILL, una vez leído todo el documento y realizada la encuesta descrita anteriormente, se pedirán únicamente los datos relevantes para las opciones marcadas:
-- Idioma en el que se generará toda la documentación (por defecto, inglés): siempre
+- Idioma en el que se generará toda la documentación (por defecto, inglés): siempre. Si se elige español o gallego, respeta sus convenciones tipográficas (no las inglesas): en los títulos y encabezados solo se capitaliza la primera palabra y los sustantivos propios (no cada palabra, a diferencia del *Title Case* inglés); y la raya (—) se emplea únicamente para incisos o aclaraciones, nunca en sustitución de los dos puntos (:).
 - Nombre del proyecto: <PROJECT_NAME>: siempre
-- Licencia elegida, recomendando al usuario licencias Open Source aprobadas por la OSI más comunes: permisivas: MIT, Apache-2.0, BSD-3-Clause; copyleft: GPL-3.0; network copyleft: AGPL-3.0 (el detalle está en references/license.md, que se consulta solo al generar el artefacto): solo si se marcó LICENSE o REUSE.toml
+- Licencia elegida, recomendando al usuario licencias Open Source aprobadas por la OSI más comunes (el detalle está en references/license.md, que se consulta solo al generar el artefacto): solo si se marcó LICENSE o REUSE.toml. **En esta opción es OBLIGATORIO imprimir por pantalla, antes de pedir la elección, la siguiente tabla-resumen para ayudar al usuario a decidir:**
+
+  | Licencia | Tipo | En una frase |
+  |----------|------|--------------|
+  | **MIT** | Permisiva | La más simple y popular: haz lo que quieras con el código, solo conserva el aviso de copyright. Máxima adopción, sin cláusula de patentes. |
+  | **Apache-2.0** | Permisiva | Como MIT pero con concesión explícita de patentes y protección frente a demandas; recomendada para proyectos con implicaciones de patentes o respaldo empresarial. |
+  | **BSD-3-Clause** | Permisiva | Muy parecida a MIT, añade una cláusula que prohíbe usar el nombre de los autores para promocionar derivados sin permiso. |
+  | **GPL-3.0** | Copyleft | Cualquier obra derivada debe distribuirse bajo la misma licencia (código abierto obligatorio). Protege que el software siga siendo libre, pero reduce su adopción comercial. |
+  | **AGPL-3.0** | Network copyleft | GPL-3.0 extendida a servicios en red: si ofreces el software como servicio web, debes publicar el código fuente a los usuarios. Ideal para SaaS que quiere evitar apropiación cerrada. |
+
+  Tras imprimir la tabla, pregunta al usuario cuál elige y recuerda que todos estos productos Open Source se entregan sin garantías (*no warranties*).
 - Cuánto tiempo se va a tardar en revisar y resolver una contribución (y disponibilidad de los mantenedores, p. ej. si son estudiantes): solo si se marcó CONTRIBUTING.md o SECURITY.md
 - Nombre del hackathon en el que se ha desarrollado el proyecto, si aplica: <HACKATHON_NAME>: solo si se marcó README.md, CONTRIBUTING.md o ARCHITECTURE_DECISIONS.md
 - Nombre, apellidos y correo electrónico de los mantenedores del proyecto (sirven también como titular del copyright en las cabeceras SPDX y el hueco `[fullname]` de las plantillas MIT/BSD, y como contacto de seguridad en las plantillas .github): solo si se marcó CONTRIBUTING.md, CODE_OF_CONDUCT.md, GOVERNANCE.md, SECURITY.md, LICENSE, REUSE.toml o Plantillas de issues y pull requests
