@@ -1,6 +1,6 @@
 # open-source
 
-Skill de Claude Code que configura la gobernanza open source completa de un proyecto siguiendo las buenas prácticas de la FSF y la OSI. Resuelve el problema de arrancar (o liberar) un repositorio open source, de **hackathon** o real.
+Skill en formato **Agent Skills** (estándar abierto) para **Claude Code** y **OpenCode** que configura la gobernanza open source completa de un proyecto siguiendo las buenas prácticas de la FSF y la OSI. Resuelve el problema de arrancar (o liberar) un repositorio open source, de **hackathon** o real.
 
 Evita tener que recordar qué documentos hacen falta, qué debe contener cada uno o dónde va cada fichero. La skill pregunta qué partes se quieren implementar y genera solo esas, pidiendo únicamente los datos relevantes.
 
@@ -50,6 +50,8 @@ flowchart TD
 
 ## Instalación
 
+**Claude Code**:
+
 ```bash
 # Personal (disponible en todos los proyectos)
 git clone https://github.com/igarbayo/open-source.git ~/.claude/skills/open-source
@@ -58,9 +60,21 @@ git clone https://github.com/igarbayo/open-source.git ~/.claude/skills/open-sour
 git clone https://github.com/igarbayo/open-source.git .claude/skills/open-source
 ```
 
+**OpenCode**:
+
+```bash
+# Personal (disponible en todos los proyectos)
+git clone https://github.com/igarbayo/open-source.git ~/.config/opencode/skills/open-source
+
+# O por proyecto
+git clone https://github.com/igarbayo/open-source.git .opencode/skills/open-source
+```
+
+OpenCode también lee las carpetas de Claude Code (`~/.claude/skills/` y `.claude/skills/`): si ya instalaste la skill ahí, Opencode la detecta sin volver a clonar.
+
 ## Uso
 
-Desde una sesión de Claude Code en el proyecto que quieres documentar, invoca la skill:
+Desde una sesión de **Claude Code** u **OpenCode** en el proyecto que quieres documentar, invoca la skill:
 
 ```
 /open-source
@@ -81,8 +95,9 @@ Con esas respuestas genera los ficheros directamente en tu proyecto, en las ruta
 
 ## Compatibilidad
 
-- Requiere **Claude Code** con soporte de skills (CLI, aplicación de escritorio o extensión de IDE).
-- Funciona instalada a nivel **personal** (`~/.claude/skills/`) o a nivel de **proyecto** (`.claude/skills/`).
+- Requiere una CLI compatible con el formato **Agent Skills**: **Claude Code** u **OpenCode**.
+- **Claude Code**: instalada a nivel **personal** (`~/.claude/skills/`) o de **proyecto** (`.claude/skills/`).
+- **OpenCode**: rutas propias `~/.config/opencode/skills/` (personal) y `.opencode/skills/` (proyecto); además lee `~/.claude/skills/` y `.claude/skills/`, por lo que reutiliza la instalación de Claude Code.
 
 ## Troubleshooting
 

@@ -1,6 +1,6 @@
 ---
 name: open-source
-description: "Use when setting up open-source governance for a project (repo hackathon o real): README, LICENSE, REUSE/SPDX, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, GOVERNANCE, CHANGELOG, plantillas .github, conventional commits, firma GPG, git flow."
+description: "Use when setting up open-source governance for a project (hackathon repo or real): README, LICENSE, REUSE/SPDX, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, GOVERNANCE, CHANGELOG, templates .github, conventional commits, GPG signature, git flow."
 ---
 
 # Buenas prácticas Open Source según la FSF
