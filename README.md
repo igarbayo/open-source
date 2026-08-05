@@ -50,7 +50,25 @@ flowchart TD
 
 ## Instalación
 
-**Claude Code**:
+### Claude Code, vía marketplace (recomendado)
+
+Desde una sesión de Claude Code:
+
+```
+/plugin marketplace add igarbayo/open-source
+/plugin install open-source@igarbayo
+```
+
+Es la vía recomendada porque trae versionado y actualizaciones: cuando se publica una versión nueva, basta con
+
+```
+/plugin marketplace update igarbayo
+/plugin update open-source@igarbayo
+```
+
+### Claude Code, vía clon manual (alternativa)
+
+Si prefieres no usar el marketplace:
 
 ```bash
 # Personal (disponible en todos los proyectos)
@@ -60,7 +78,9 @@ git clone https://github.com/igarbayo/open-source.git ~/.claude/skills/open-sour
 git clone https://github.com/igarbayo/open-source.git .claude/skills/open-source
 ```
 
-**OpenCode**:
+Como el repositorio incluye `.claude-plugin/plugin.json`, Claude Code lo carga como plugin `open-source@skills-dir` en vez de como skill suelta, así que la invocación es la misma que con el marketplace. Dos avisos para la instalación por proyecto: requiere aceptar el diálogo de confianza del workspace, y hay que arrancar Claude Code desde la raíz del repositorio (los plugins de `@skills-dir` no se buscan hacia arriba desde un subdirectorio).
+
+### OpenCode
 
 ```bash
 # Personal (disponible en todos los proyectos)
@@ -70,17 +90,19 @@ git clone https://github.com/igarbayo/open-source.git ~/.config/opencode/skills/
 git clone https://github.com/igarbayo/open-source.git .opencode/skills/open-source
 ```
 
-OpenCode también lee las carpetas de Claude Code (`~/.claude/skills/` y `.claude/skills/`): si ya instalaste la skill ahí, Opencode la detecta sin volver a clonar.
+OpenCode no tiene sistema de plugins: ignora `.claude-plugin/` y carga el repositorio como skill normal. También lee las carpetas de Claude Code (`~/.claude/skills/` y `.claude/skills/`): si ya la clonaste ahí, la detecta sin volver a clonar.
 
 ## Uso
 
-Desde una sesión de **Claude Code** u **OpenCode** en el proyecto que quieres documentar, invoca la skill:
+Desde una sesión de **Claude Code** u **OpenCode** en el proyecto que quieres documentar, invoca la skill. El comando depende de cómo la hayas instalado, porque como plugin queda bajo su propio espacio de nombres:
 
-```
-/open-source
-```
+| Instalación | Se carga como | Invocación |
+|---|---|---|
+| Marketplace | plugin `open-source@igarbayo` | `/open-source:open-source` |
+| Clon en `~/.claude/skills/` o `.claude/skills/` | plugin `open-source@skills-dir` | `/open-source:open-source` |
+| Clon en OpenCode | skill normal | `/open-source` |
 
-o simplemente pídelo en lenguaje natural:
+En los tres casos puedes simplemente pedirlo en lenguaje natural, sin recordar el comando:
 
 ```
 Configura la gobernanza open source de este proyecto
@@ -96,14 +118,15 @@ Con esas respuestas genera los ficheros directamente en tu proyecto, en las ruta
 ## Compatibilidad
 
 - Requiere una CLI compatible con el formato **Agent Skills**: **Claude Code** u **OpenCode**.
-- **Claude Code**: instalada a nivel **personal** (`~/.claude/skills/`) o de **proyecto** (`.claude/skills/`).
-- **OpenCode**: rutas propias `~/.config/opencode/skills/` (personal) y `.opencode/skills/` (proyecto); además lee `~/.claude/skills/` y `.claude/skills/`, por lo que reutiliza la instalación de Claude Code.
+- **Claude Code**: por marketplace (requiere una versión con soporte de plugins, `/plugin`), o clonada a nivel **personal** (`~/.claude/skills/`) o de **proyecto** (`.claude/skills/`).
+- **OpenCode**: no tiene marketplace de plugins, así que su vía es el clon. Rutas propias `~/.config/opencode/skills/` (personal) y `.opencode/skills/` (proyecto); además lee `~/.claude/skills/` y `.claude/skills/`, por lo que reutiliza la instalación de Claude Code.
 
 ## Troubleshooting
 
 | Problema | Causa y solución |
 |---|---|
-| La skill no aparece / no se descubre | La carpeta donde se clona debe llamarse exactamente `open-source`, coincidiendo con el `name:` del frontmatter de `SKILL.md`. Renombra la carpeta si la clonaste con otro nombre. |
+| `/plugin install` no encuentra el plugin | El catálogo local está desactualizado. Ejecuta `/plugin marketplace update igarbayo` y vuelve a intentarlo. Comprueba lo que tienes instalado con `claude plugin list`. |
+| Instalé por marketplace pero `/open-source` no existe | Como plugin, el comando está bajo su espacio de nombres: es `/open-source:open-source`. Ver la tabla de la sección [Uso](#uso). |
 | La skill se carga pero falla al generar un artefacto | La tabla de enrutado usa rutas relativas (`references/*.md`). No muevas la carpeta `references/` ni renombres sus ficheros. |
 | Genera documentación en un idioma inesperado | El idioma por defecto es inglés; indícalo explícitamente cuando la skill pregunte los datos. |
 

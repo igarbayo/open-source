@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "open-source",
+  "displayName": "Open Source Governance",
+  "description": "Genera la gobernanza open source completa de un repositorio siguiendo las buenas prácticas de la FSF y la OSI.",
+  "version": "1.1.0",
+  "author": {
+    "name": "igarbayo",
+    "url": "https://github.com/igarbayo"
+  },
+  "homepage": "https://github.com/igarbayo/open-source",
+  "repository": "https://github.com/igarbayo/open-source",
+  "license": "MIT",
+  "keywords": [
+    "open-source",
+    "governance",
+    "license",
+    "reuse",
+    "spdx",
+    "fsf",
+    "osi",
+    "contributing",
+    "security",
+    "cra",
+    "hackathon"
+  ],
+  "skills": ["./"]
+}

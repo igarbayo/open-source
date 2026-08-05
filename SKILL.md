@@ -5,7 +5,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebFetch, Bash(ls:*), Bash(mkdir:*
 license: MIT
 metadata:
   author: igarbayo
-  version: "1.0.1"
+  version: "1.1.0"
 ---
 
 # Buenas prácticas Open Source según la FSF
