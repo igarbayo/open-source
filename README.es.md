@@ -1,12 +1,20 @@
 # open-source
 
+[![skills.sh](https://skills.sh/b/igarbayo/open-source)](https://skills.sh/igarbayo/open-source)
+
 [English](README.md) · **Español**
+
+```bash
+npx skills add igarbayo/open-source
+```
 
 Skill en formato **Agent Skills** (estándar abierto) para **Claude Code** y **OpenCode** que configura la gobernanza open source completa de un proyecto siguiendo las buenas prácticas de la FSF y la OSI. Resuelve el problema de arrancar (o liberar) un repositorio open source, de **hackathon** o real.
 
 Evita tener que recordar qué documentos hacen falta, qué debe contener cada uno o dónde va cada fichero. La skill pregunta qué partes se quieren implementar y genera solo esas, pidiendo únicamente los datos relevantes.
 
 > Las instrucciones de la skill están escritas en inglés, pero **la documentación que genera puede estar en cualquier idioma**: es una de las preguntas que hace, con inglés por defecto.
+
+El comando de arriba funciona en cualquier agente que detecte la [CLI de skills](https://github.com/vercel-labs/skills). Las demás vías — marketplace de Claude Code, clon manual, OpenCode — están en [Instalación](#instalación).
 
 ## Características
 
@@ -56,7 +64,19 @@ flowchart TD
 
 ## Instalación
 
-### Claude Code, vía marketplace (recomendado)
+### Un solo comando, cualquier agente (lo más rápido)
+
+```bash
+# En el proyecto actual (.claude/skills/, .opencode/skills/…)
+npx skills add igarbayo/open-source
+
+# O una vez para todos los proyectos
+npx skills add igarbayo/open-source --global
+```
+
+La [CLI de skills](https://github.com/vercel-labs/skills) detecta qué agentes de código tienes instalados y escribe la skill en la carpeta de cada uno; si no detecta ninguno, pregunta. `npx skills update` la actualiza y `npx skills remove` la desinstala. Cubre igual a Claude Code y a OpenCode, así que es la vía más corta salvo que quieras específicamente la maquinaria de `/plugin` de abajo.
+
+### Claude Code, vía marketplace
 
 Desde una sesión de Claude Code:
 
@@ -65,7 +85,7 @@ Desde una sesión de Claude Code:
 /plugin install open-source@igarbayo
 ```
 
-Es la vía recomendada porque trae versionado y actualizaciones: cuando se publica una versión nueva, basta con
+Es la vía nativa de Claude Code y gestiona la skill como plugin versionado: cuando se publica una versión nueva, basta con
 
 ```
 /plugin marketplace update igarbayo
@@ -105,10 +125,12 @@ Desde una sesión de **Claude Code** u **OpenCode** en el proyecto que quieres d
 | Instalación | Se carga como | Invocación |
 |---|---|---|
 | Marketplace | plugin `open-source@igarbayo` | `/open-source:open-source` |
+| `npx skills add`, en Claude Code | plugin `open-source@skills-dir` | `/open-source:open-source` |
+| `npx skills add`, en OpenCode | skill normal | `/open-source` |
 | Clon en `~/.claude/skills/` o `.claude/skills/` | plugin `open-source@skills-dir` | `/open-source:open-source` |
 | Clon en OpenCode | skill normal | `/open-source` |
 
-En los tres casos puedes simplemente pedirlo en lenguaje natural, sin recordar el comando:
+En todos los casos puedes simplemente pedirlo en lenguaje natural, sin recordar el comando:
 
 ```
 Configura la gobernanza open source de este proyecto
@@ -126,6 +148,7 @@ Si eliges un idioma distinto del inglés, la skill carga además `references/loc
 ## Compatibilidad
 
 - Requiere una CLI compatible con el formato **Agent Skills**: **Claude Code** u **OpenCode**.
+- **`npx skills`**: la [CLI de skills](https://github.com/vercel-labs/skills) instala en cualquiera de esos agentes que encuentre, así que es la vía común para ambos. Necesita Node.js.
 - **Claude Code**: por marketplace (requiere una versión con soporte de plugins, `/plugin`), o clonada a nivel **personal** (`~/.claude/skills/`) o de **proyecto** (`.claude/skills/`).
 - **OpenCode**: no tiene marketplace de plugins, así que su vía es el clon. Rutas propias `~/.config/opencode/skills/` (personal) y `.opencode/skills/` (proyecto); además lee `~/.claude/skills/` y `.claude/skills/`, por lo que reutiliza la instalación de Claude Code.
 
@@ -133,6 +156,7 @@ Si eliges un idioma distinto del inglés, la skill carga además `references/loc
 
 | Problema | Causa y solución |
 |---|---|
+| `npx skills add` termina pero el agente no ve la skill | La CLI instala en el **proyecto actual** salvo que pases `--global`, y hay que reiniciar la sesión para que detecte una skill nueva. Comprueba dónde ha quedado con `npx skills list`. |
 | `/plugin install` no encuentra el plugin | El catálogo local está desactualizado. Ejecuta `/plugin marketplace update igarbayo` y vuelve a intentarlo. Comprueba lo que tienes instalado con `claude plugin list`. |
 | Instalé por marketplace pero `/open-source` no existe | Como plugin, el comando está bajo su espacio de nombres: es `/open-source:open-source`. Ver la tabla de la sección [Uso](#uso). |
 | La skill se carga pero falla al generar un artefacto | La tabla de enrutado usa rutas relativas (`references/*.md`). No muevas la carpeta `references/` ni renombres sus ficheros. |

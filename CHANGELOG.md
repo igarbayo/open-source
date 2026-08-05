@@ -8,6 +8,16 @@ Every maintainer, contributor or AI agent working on this repository must update
 
 ## [Unreleased]
 
+### Added
+
+- Installation in a single command, `npx skills add igarbayo/open-source`, promoted to the top of both READMEs and to the first subsection of *Installation*. The [skills CLI](https://github.com/vercel-labs/skills) already discovered this repository without any change on our side — its root directory counts as a discovery location because it contains a `SKILL.md`, and it additionally reads `.claude-plugin/marketplace.json` and `plugin.json`, so the plugin work from `1.1.0` pays off twice. Until now the shortest path on offer was cloning into an exact path, which is friction that loses installations before they happen: the point of a governance skill is that someone can try it in the ten seconds between deciding to open source a project and losing interest.
+- A skills.sh badge linking to the directory listing, the same format the Vercel Labs repository uses for itself.
+- Coverage of the CLI route across the rest of the README: rows in the invocation table for Claude Code and OpenCode installs made through `npx skills add`, a compatibility bullet noting it needs Node.js, and a troubleshooting row for the most likely stumble — the CLI installs into the current project unless `--global` is passed, and the session has to be restarted before a new skill is picked up.
+
+### Changed
+
+- The marketplace route is no longer labelled "recommended". It is now described for what it actually is, the route native to Claude Code that manages the skill as a versioned plugin, while the CLI is presented as the fastest and the only one that covers both supported agents. Two routes cannot both be the recommendation, and the one to lead with is the one that costs a single command.
+
 ## [1.2.0] - 2026-08-05
 
 ### Changed
