@@ -2,6 +2,12 @@
 
 [![skills.sh](https://skills.sh/b/igarbayo/open-source)](https://skills.sh/igarbayo/open-source)
 [![REUSE](https://api.reuse.software/badge/github.com/igarbayo/open-source)](https://api.reuse.software/info/github.com/igarbayo/open-source)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/igarbayo/open-source/badge)](https://scorecard.dev/viewer/?uri=github.com/igarbayo/open-source)
+<!-- OpenSSF Best Practices: descomentar cuando el proyecto esté registrado en
+     https://www.bestpractices.dev/ (entrar con GitHub → "Get your badge now"),
+     sustituyendo {{ID}} por el identificador numérico que asigna el sitio.
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/{{ID}}/badge)](https://www.bestpractices.dev/projects/{{ID}})
+-->
 
 [English](README.md) · **Español**
 
@@ -162,6 +168,16 @@ Si eliges un idioma distinto del inglés, la skill carga además `references/loc
 | Instalé por marketplace pero `/open-source` no existe | Como plugin, el comando está bajo su espacio de nombres: es `/open-source:open-source`. Ver la tabla de la sección [Uso](#uso). |
 | La skill se carga pero falla al generar un artefacto | La tabla de enrutado usa rutas relativas (`references/*.md`). No muevas la carpeta `references/` ni renombres sus ficheros. |
 | Genera documentación en un idioma inesperado | El idioma por defecto es inglés, independientemente del idioma en el que hables con la skill; indícalo explícitamente cuando pregunte los datos. |
+
+## Contribuir
+
+Las contribuciones son bienvenidas y [CONTRIBUTING.md](CONTRIBUTING.md) explica el flujo completo: cómo instalar tu copia de trabajo en un agente, cómo probar un cambio (una skill es un prompt, así que la única prueba real es ejecutarla y leer lo que sale), el convenio de commits y la definición de terminado. El [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) se aplica a todos los espacios del proyecto.
+
+Los tiempos de revisión son honestos y no halagadores: el mantenedor es estudiante y un pull request puede esperar semanas en época de exámenes.
+
+## Seguridad
+
+Las vulnerabilidades no se reportan en un issue público. [SECURITY.md](SECURITY.md) describe los canales privados y qué entra en el alcance, incluida la superficie fácil de pasar por alto en un repositorio de Markdown: su contenido se carga en un agente de código y le indica a ese agente que escriba ficheros en tu proyecto.
 
 ## Soporte
 

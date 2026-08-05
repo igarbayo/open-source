@@ -2,6 +2,12 @@
 
 [![skills.sh](https://skills.sh/b/igarbayo/open-source)](https://skills.sh/igarbayo/open-source)
 [![REUSE](https://api.reuse.software/badge/github.com/igarbayo/open-source)](https://api.reuse.software/info/github.com/igarbayo/open-source)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/igarbayo/open-source/badge)](https://scorecard.dev/viewer/?uri=github.com/igarbayo/open-source)
+<!-- OpenSSF Best Practices: uncomment once the project is registered at
+     https://www.bestpractices.dev/ (sign in with GitHub → "Get your badge now"),
+     replacing {{ID}} with the numeric project id the site assigns.
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/{{ID}}/badge)](https://www.bestpractices.dev/projects/{{ID}})
+-->
 
 **English** · [Español](README.es.md)
 
@@ -162,6 +168,16 @@ If you pick a language other than English, the skill additionally loads `referen
 | I installed via the marketplace but `/open-source` does not exist | As a plugin, the command lives under its namespace: it is `/open-source:open-source`. See the table in the [Usage](#usage) section. |
 | The skill loads but fails while generating an artifact | The routing table uses relative paths (`references/*.md`). Do not move the `references/` folder or rename its files. |
 | It generates documentation in an unexpected language | The default language is English, regardless of the language you speak to the skill in; state it explicitly when the skill asks for the data. |
+
+## Contributing
+
+Contributions are welcome, and [CONTRIBUTING.md](CONTRIBUTING.md) explains the whole flow: how to install your working copy into an agent, how to exercise a change (a skill is a prompt — the only real test is running it and reading the output), the commit convention and the definition of done. The [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) applies to every space in the project.
+
+Review times are honest rather than flattering: the maintainer is a student and a pull request can wait weeks during term.
+
+## Security
+
+Do not report vulnerabilities in a public issue. [SECURITY.md](SECURITY.md) describes the private channels and what falls in scope — including the surface that is easy to miss in a repository of Markdown, namely that its content is loaded into a coding agent and tells that agent to write files into your project.
 
 ## Support
 
