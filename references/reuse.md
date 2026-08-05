@@ -7,13 +7,13 @@ Estrategia por tipo de fichero:
 - **Código green field (nuevo)**: cabecera SPDX al inicio de cada fichero fuente, como comentario:
 
   ```
-  # SPDX-FileCopyrightText: 2026 <MAINTAINER_NAME> <email>
+  # SPDX-FileCopyrightText: 2026 {{MAINTAINER_NAME}} <{{EMAIL}}>
   # SPDX-License-Identifier: MIT
   ```
 
-  Se puede automatizar con `pipx run reuse annotate --copyright "<NAME> <email>" --license MIT <ficheros>`.
+  Se puede automatizar con `pipx run reuse annotate --copyright "{{MAINTAINER_NAME}} <{{EMAIL}}>" --license MIT {{ficheros}}`.
 
-- **Ficheros donde no se puede editar el contenido** (imágenes, binarios, datasets): fichero sidecar `<nombre>.<ext>.license` con las dos líneas SPDX, o cubrirlos vía `REUSE.toml`.
+- **Ficheros donde no se puede editar el contenido** (imágenes, binarios, datasets): fichero sidecar `{{nombre}}.{{ext}}.license` con las dos líneas SPDX, o cubrirlos vía `REUSE.toml`.
 
 - **Código heredado (brown field), documentación y ficheros masivos**: declararlos en `REUSE.toml` en la raíz. Ejemplo mínimo:
 
@@ -22,15 +22,15 @@ Estrategia por tipo de fichero:
 
   [[annotations]]
   path = ["docs/**", "*.md"]
-  SPDX-FileCopyrightText = "2026 <MAINTAINER_NAME> <email>"
+  SPDX-FileCopyrightText = "2026 {{MAINTAINER_NAME}} <{{EMAIL}}>"
   SPDX-License-Identifier = "MIT"
 
   [[annotations]]
   path = "assets/**"
-  SPDX-FileCopyrightText = "2026 <MAINTAINER_NAME> <email>"
+  SPDX-FileCopyrightText = "2026 {{MAINTAINER_NAME}} <{{EMAIL}}>"
   SPDX-License-Identifier = "CC-BY-4.0"
   ```
 
-Cada licencia referenciada debe tener su texto completo en `LICENSES/<SPDX-ID>.txt` (ver references/license.md).
+Cada licencia referenciada debe tener su texto completo en `LICENSES/{{LICENSE_ID}}.txt` (ver [license.md](license.md)).
 
 Verificación: `pipx run reuse lint` (o `pip install reuse && reuse lint`) debe pasar sin errores antes de dar por terminado este artefacto.

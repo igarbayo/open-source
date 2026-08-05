@@ -1,5 +1,22 @@
 # Conventional commits
 
+## Contenidos
+
+- [Formato](#formato)
+- [Initial commit](#initial-commit)
+- [Merge commit](#merge-commit)
+- [Revert commit](#revert-commit)
+- [Types](#types)
+- [Scopes](#scopes)
+- [Breaking changes indicator](#breaking-changes-indicator)
+- [Description](#description)
+- [Body](#body)
+- [Footer](#footer)
+- [Versioning](#versioning)
+- [Examples](#examples)
+
+## Formato
+
 Se debe seguir la convención de commits convencional para mantener un historial de commits claro y estructurado. Esto implica utilizar un formato específico para los mensajes de commit.
 
 > Nota: esta guía está basada en la de qoomon (commit-conventions). Los tipos `ops` y `style` son extensiones de esa guía, no forman parte del estándar de conventionalcommits.org.
@@ -14,25 +31,29 @@ empty line as separator
 <optional footer>
 ```
 
-### Initial Commit 
+## Initial commit
+
 ```
 chore: init
 ```
 
-### Merge Commit
-<pre>
-Merge branch '<b>&lt;branch name&gt;</b>'
-</pre>
-<sup>Follows default git merge message</sup>
+## Merge commit
 
-### Revert Commit
-<pre>
-Revert "<b>&lt;reverted commit subject line&gt;</b>"
-</pre>
-<sup>Follows default git revert message</sup>
+```
+Merge branch '<branch name>'
+```
 
+*Sigue el mensaje por defecto de `git merge`.*
 
-### Types
+## Revert commit
+
+```
+Revert "<reverted commit subject line>"
+```
+
+*Sigue el mensaje por defecto de `git revert`.*
+
+## Types
 - Changes relevant to the API or UI:
     - `feat` Commits that add, adjust or remove a new feature to the API or UI
     - `fix` Commits that fix an API or UI bug of a preceded `feat` commit
@@ -45,17 +66,17 @@ Revert "<b>&lt;reverted commit subject line&gt;</b>"
 - `ops` Commits that affect operational aspects like infrastructure (IaC), deployment scripts, CI/CD pipelines, backups, monitoring, or recovery procedures, ...
 - `chore` Commits that represent tasks like initial commit, modifying `.gitignore`, ...
 
-### Scopes
+## Scopes
 The `scope` provides additional contextual information.
 * The scope is an **optional** part
 * Allowed scopes vary and are typically defined by the specific project
 * **Do not** use issue identifiers as scopes
 
-### Breaking Changes Indicator
+## Breaking Changes Indicator
 - A commit that introduce breaking changes **must** be indicated by an `!` before the `:` in the subject line e.g. `feat(api)!: remove status endpoint`
 - Breaking changes **should** be described in the [commit footer section], if the [commit description] isn't sufficiently informative
 
-### Description
+## Description
 The `description` contains a concise description of the change. 
 - The description is a **mandatory** part
 - Use the imperative, present tense: "change" not "changed" nor "changes"
@@ -64,12 +85,12 @@ The `description` contains a concise description of the change.
 - **Do not** end the description with a period (`.`)
 - In case of breaking changes also see [breaking changes indicator]
 
-### Body
+## Body
 The `body` should include the motivation for the change and contrast this with previous behavior.
 - The body is an **optional** part
 - Use the imperative, present tense: "change" not "changed" nor "changes"
 
-### Footer
+## Footer
 The `footer` should contain issue references and informations about **Breaking Changes**
 - The footer is an **optional** part, except if the commit introduce breaking changes
 - *Optionally* reference issue identifiers (e.g., `Closes #123`, `Fixes JIRA-456`) 
@@ -77,14 +98,14 @@ The `footer` should contain issue references and informations about **Breaking C
   - For a single line description just add a space after `BREAKING CHANGE:`
   - For a multi line description add two new lines after `BREAKING CHANGE:`
 
-### Versioning
+## Versioning
 - **If** your next release contains commit with...
    - **Breaking Changes** incremented the **major version**
    - **API relevant changes** (`feat` or `fix`) incremented the **minor version**
 - **Else** increment the **patch version**
 
 
-### Examples
+## Examples
 - ```
   feat: add email notifications on new direct messages
   ```

@@ -7,7 +7,7 @@ Son **dos mecanismos distintos e independientes**; este proyecto adopta ambos:
 Todos los commits vendrán firmados con GPG (`git commit -S`, o automático con la configuración):
 
 ```
-git config --global user.signingkey <GPG_KEY_ID>
+git config --global user.signingkey {{GPG_KEY_ID}}
 git config --global commit.gpgsign true
 ```
 

@@ -71,7 +71,7 @@ What are you trying to achieve?
 blank_issues_enabled: false
 contact_links:
   - name: Security vulnerability
-    url: <SECURITY_CONTACT_URL_OR_MAILTO>
+    url: {{SECURITY_CONTACT_URL_OR_MAILTO}}
     about: Please report vulnerabilities privately, never as a public issue (see SECURITY.md).
 ```
 
