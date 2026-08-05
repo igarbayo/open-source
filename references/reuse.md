@@ -1,21 +1,21 @@
-# REUSE.toml y cabeceras SPDX
+# REUSE.toml and SPDX headers
 
-Seguimos la especificación REUSE 3.2. **No usar `.reuse/dep5`: está deprecado** y fue reemplazado por `REUSE.toml` en la raíz del repositorio.
+Follow the REUSE 3.2 specification. **Do not use `.reuse/dep5`: it is deprecated** and was replaced by `REUSE.toml` at the root of the repository.
 
-Estrategia por tipo de fichero:
+Strategy per file type:
 
-- **Código green field (nuevo)**: cabecera SPDX al inicio de cada fichero fuente, como comentario:
+- **Green field code (new)**: an SPDX header at the top of every source file, as a comment:
 
   ```
   # SPDX-FileCopyrightText: 2026 {{MAINTAINER_NAME}} <{{EMAIL}}>
   # SPDX-License-Identifier: MIT
   ```
 
-  Se puede automatizar con `pipx run reuse annotate --copyright "{{MAINTAINER_NAME}} <{{EMAIL}}>" --license MIT {{ficheros}}`.
+  This can be automated with `pipx run reuse annotate --copyright "{{MAINTAINER_NAME}} <{{EMAIL}}>" --license MIT {{files}}`.
 
-- **Ficheros donde no se puede editar el contenido** (imágenes, binarios, datasets): fichero sidecar `{{nombre}}.{{ext}}.license` con las dos líneas SPDX, o cubrirlos vía `REUSE.toml`.
+- **Files whose content cannot be edited** (images, binaries, datasets): a sidecar file `{{name}}.{{ext}}.license` with the two SPDX lines, or cover them via `REUSE.toml`.
 
-- **Código heredado (brown field), documentación y ficheros masivos**: declararlos en `REUSE.toml` en la raíz. Ejemplo mínimo:
+- **Legacy code (brown field), documentation and bulk files**: declare them in `REUSE.toml` at the root. Minimal example:
 
   ```toml
   version = 1
@@ -31,6 +31,6 @@ Estrategia por tipo de fichero:
   SPDX-License-Identifier = "CC-BY-4.0"
   ```
 
-Cada licencia referenciada debe tener su texto completo en `LICENSES/{{LICENSE_ID}}.txt` (ver [license.md](license.md)).
+Every referenced license must have its full text in `LICENSES/{{LICENSE_ID}}.txt` (see [license.md](license.md)).
 
-Verificación: `pipx run reuse lint` (o `pip install reuse && reuse lint`) debe pasar sin errores antes de dar por terminado este artefacto.
+Verification: `pipx run reuse lint` (or `pip install reuse && reuse lint`) must pass without errors before considering this artifact done.

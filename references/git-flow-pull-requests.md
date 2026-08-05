@@ -1,38 +1,38 @@
-# Git flow y pull requests
+# Git flow and pull requests
 
 ## Git flow
 
-### Ramas principales
-- **`main`** (o `master`): Contiene únicamente el código estable que está en producción. Las versiones se marcan aquí mediante *tags* (ej. `v1.0.0`).
-- **`develop`**: Contiene el código en desarrollo para la próxima versión. Es la rama de integración principal.
+### Main branches
+- **`main`** (or `master`): contains only the stable code that is in production. Releases are marked here with *tags* (e.g. `v1.0.0`).
+- **`develop`**: contains the code being developed for the next release. It is the main integration branch.
 
-### Ramas de soporte
+### Supporting branches
 
-#### Ramas de funcionalidad (`feature/*`)
-- **Nacen de:** `develop`
-- **Se fusionan en:** `develop`
-- **Propósito:** Desarrollar nuevas características aisladas del resto del código.
-- **Flujo:** `develop` ➔ `feature/nombre-funcion` ➔ `develop`
+#### Feature branches (`feature/*`)
+- **Created from:** `develop`
+- **Merged into:** `develop`
+- **Purpose:** develop new features isolated from the rest of the code.
+- **Flow:** `develop` ➔ `feature/feature-name` ➔ `develop`
 
-#### Ramas de lanzamiento (`release/*`)
-- **Nacen de:** `develop`
-- **Se fusionan en:** `main` **y** `develop`
-- **Propósito:** Estabilizar una nueva versión, corregir bugs menores y preparar el paso a producción. No se añaden nuevas funcionalidades.
-- **Flujo:**
+#### Release branches (`release/*`)
+- **Created from:** `develop`
+- **Merged into:** `main` **and** `develop`
+- **Purpose:** stabilize a new release, fix minor bugs and prepare the move to production. No new features are added.
+- **Flow:**
     1. `develop` ➔ `release/v1.1.0`
-    2. `release/v1.1.0` ➔ `main` (se etiqueta como `v1.1.0`)
+    2. `release/v1.1.0` ➔ `main` (tagged as `v1.1.0`)
     3. `release/v1.1.0` ➔ `develop`
 
-#### Ramas de corrección Rápida (`hotfix/*`)
-- **Nacen de:** `main`
-- **Se fusionan en:** `main` **y** `develop` (o en la rama `release` si hay una activa).
-- **Propósito:** Solucionar errores críticos e inmediatos directamente en el entorno de producción.
-- **Flujo:**
-    1. `main` ➔ `hotfix/solucion-error`
-    2. `hotfix/solucion-error` ➔ `main` (se etiqueta como `v1.0.1`)
-    3. `hotfix/solucion-error` ➔ `develop`
+#### Hotfix branches (`hotfix/*`)
+- **Created from:** `main`
+- **Merged into:** `main` **and** `develop` (or into the `release` branch if one is active).
+- **Purpose:** fix critical, immediate bugs directly in the production environment.
+- **Flow:**
+    1. `main` ➔ `hotfix/bug-fix`
+    2. `hotfix/bug-fix` ➔ `main` (tagged as `v1.0.1`)
+    3. `hotfix/bug-fix` ➔ `develop`
 
 
 ## Pull requests
 
-Se configurarán tanto la rama main como la rama develop para que requieran revisiones de código antes de permitir la fusión de pull requests. Esto se puede hacer en la sección de Branches del repositorio, estableciendo reglas de protección para ambas ramas. Se bloquerán los commits directos a estas dos ramas. Esto garantiza que todas las contribuciones sean revisadas por al menos otro colaborador antes de ser fusionadas, lo que mejora la calidad del código y reduce la probabilidad de introducir errores en el proyecto.
+Configure both `main` and `develop` to require code reviews before a pull request can be merged. This is done in the repository's Branches section, setting protection rules for both branches. Direct commits to these two branches are blocked. This guarantees that every contribution is reviewed by at least one other contributor before being merged, which improves code quality and reduces the chance of introducing bugs into the project.

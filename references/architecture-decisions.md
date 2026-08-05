@@ -1,7 +1,7 @@
 # ARCHITECTURE_DECISIONS.md
 
-Aunque inicialmente vacío, ya que lo rellenan los maintainers, se incluirá un documento donde se pase por todo el proceso de prueba y error que se ha seguido durante el hackathon, explicando de forma honesta las decisiones tomadas, las dificultades encontradas y las soluciones adoptadas para todas las partes del proyecto. Esto incluye la elección de tecnologías, la estructura del código, las decisiones de diseño y cualquier otro aspecto relevante del desarrollo del proyecto. Este documento servirá como un registro transparente y detallado del proceso de desarrollo, lo que permitirá a otros colaboradores entender el contexto y las razones detrás de cada decisión tomada durante el hackathon.
+Although it starts out empty, since the maintainers are the ones who fill it in, include a document that walks through the whole trial-and-error process followed during the hackathon, honestly explaining the decisions taken, the difficulties found and the solutions adopted for every part of the project. This covers the choice of technologies, the code structure, the design decisions and any other relevant aspect of the project's development. The document acts as a transparent, detailed record of the development process, letting other contributors understand the context and the reasoning behind each decision taken during the hackathon.
 
-Cada decisión puede registrarse en formato ADR ligero: contexto, decisión y consecuencias.
+Each decision can be recorded as a lightweight ADR: context, decision and consequences.
 
-Este fichero estará en la carpeta docs/.
+This file lives in the docs/ folder.

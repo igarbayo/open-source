@@ -1,7 +1,7 @@
 # CODE_OF_CONDUCT.md
 
-Debe incluir un contact point con, por ejemplo, los correos de todos los mantenedores.
+It must include a contact point, for example the email addresses of all the maintainers.
 
-Se seguirá el ejemplo de Contributor Covenant, que es un código de conducta ampliamente utilizado en proyectos de código abierto. Este código establece pautas claras para el comportamiento esperado de los colaboradores, incluyendo el respeto mutuo, la inclusión y la diversidad. Además, se debe incluir un proceso claro para reportar y manejar cualquier violación del código de conducta, asegurando que todos los colaboradores se sientan seguros y bienvenidos en el proyecto.
+Follow the Contributor Covenant, a code of conduct widely used in open source projects. It sets clear guidelines for the behaviour expected from contributors, including mutual respect, inclusion and diversity. It must also include a clear process to report and handle any violation of the code of conduct, so that every contributor feels safe and welcome in the project.
 
-El canal de reporte será un email privado y nunca un issue público. Se incluyen compromisos de respuesta temporal explícitos y consecuencias graduadas para violaciones.
+The reporting channel must be a private email and never a public issue. Include explicit response-time commitments and graduated consequences for violations.

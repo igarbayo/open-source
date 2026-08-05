@@ -1,20 +1,20 @@
 # SECURITY.md
 
-Se redacta alineado con la CRA (Cyber Resilience Act, la regulación europea de ciberresiliencia). Aunque el software libre no comercial está exento como fabricante y no es estrictamente necesario para proyectos de hackathon, se incluye igualmente como buena práctica. Será de los documentos más breves.
+This document is written in line with the CRA (Cyber Resilience Act, the European cyber-resilience regulation). Although non-commercial free software is exempt as a manufacturer and this is not strictly required for hackathon projects, it is included anyway as a best practice. It will be one of the shortest documents.
 
-Estructura del SECURITY.md generado:
+Structure of the generated SECURITY.md:
 
-1. **Supported versions**: tabla de versiones con soporte de seguridad. Para un proyecto de hackathon, normalmente solo la última:
+1. **Supported versions**: a table of versions with security support. For a hackathon project, usually only the latest one:
 
    | Version | Supported |
    |---------|-----------|
-   | latest / main | Sí |
+   | latest / main | Yes |
    | anything else | No |
 
-2. **Reporting a vulnerability**: canal **privado**, nunca un issue público. Opciones: GitHub Private Vulnerability Reporting (pestaña Security → "Report a vulnerability", recomendado si está activado) o email directo a los mantenedores (usar los correos recogidos en la encuesta).
+2. **Reporting a vulnerability**: a **private** channel, never a public issue. Options: GitHub Private Vulnerability Reporting (Security tab → "Report a vulnerability", recommended if enabled) or direct email to the maintainers (use the addresses collected in the survey).
 
-3. **Response timelines**: compromisos realistas — acuse de recibo en 48–72 horas; evaluación y resolución best-effort, ajustada a la disponibilidad declarada por los mantenedores (si son estudiantes, indicarlo explícitamente).
+3. **Response timelines**: realistic commitments — acknowledgement within 48–72 hours; best-effort assessment and resolution, adjusted to the availability the maintainers declared (if they are students, say so explicitly).
 
-4. **Known limitations**: sección donde se declaran honestamente las limitaciones de seguridad conocidas del proyecto (p. ej., sin auditoría externa, dependencias sin revisar, proyecto nacido en un hackathon).
+4. **Known limitations**: a section that honestly states the project's known security limitations (e.g. no external audit, unreviewed dependencies, a project born at a hackathon).
 
-5. **Disclosure policy**: se pide divulgación coordinada — no publicar detalles hasta que exista un fix o haya pasado un plazo razonable acordado.
+5. **Disclosure policy**: ask for coordinated disclosure — do not publish details until a fix exists or a reasonable agreed period has passed.

@@ -5,7 +5,7 @@
     "name": "igarbayo",
     "url": "https://github.com/igarbayo"
   },
-  "description": "Plugins de igarbayo para Claude Code.",
+  "description": "igarbayo's plugins for Claude Code.",
   "plugins": [
     {
       "name": "open-source",

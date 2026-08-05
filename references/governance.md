@@ -1,9 +1,9 @@
 # GOVERNANCE.md
 
-Debe incluir un contact point con, por ejemplo, los correos de todos los mantenedores. Además, se debe incluir un proceso claro para la toma de decisiones, la gestión de conflictos y la incorporación de nuevos colaboradores. También se debe definir el rol y las responsabilidades de cada miembro del equipo, así como las reglas para la participación en el proyecto.
+It must include a contact point, for example the email addresses of all the maintainers. It must also include a clear process for decision-making, conflict management and onboarding new contributors. It must define the role and responsibilities of each team member, as well as the rules for participating in the project.
 
-En general, para proyectos de hackathon, se establecerán reglas básicas de voto por todos los integrantes del equipo en igualdad de condiciones, y se establecerá un proceso de toma de decisiones basado en el consenso o la mayoría simple, dependiendo del tamaño del equipo y la naturaleza de las decisiones a tomar. Además, se fomentará la comunicación abierta y transparente entre los miembros del equipo para asegurar que todos estén informados y puedan participar activamente en el proyecto.
+In general, for hackathon projects, set basic voting rules where every team member participates on equal terms, and a decision-making process based on consensus or a simple majority, depending on the team size and the nature of the decisions. Encourage open and transparent communication between team members so that everyone stays informed and can take an active part in the project.
 
-Para las decisiones cotidianas, cualquiera de los maintainers puede actuar solo. Para las decisiones significativas (nuevas dependencias, cambios de protocolos, nuevas versiones, etc.), se requiere el acuerdo de >= 2 maintainers (solo para proyectos de más de 1 persona). 
+For day-to-day decisions, any of the maintainers can act alone. For significant decisions (new dependencies, protocol changes, new releases, etc.), the agreement of >= 2 maintainers is required (only for projects with more than one person).
 
-Proceso para añadir nuevos maintainers: por unanimidad, cuando el proyecto lo necesite. Tendrá roles decision-making y maintainer expectations.
+Process for adding new maintainers: by unanimity, whenever the project needs it. It covers roles, decision-making and maintainer expectations.

@@ -1,47 +1,84 @@
 # Changelog
 
-Todos los cambios relevantes de este proyecto se documentan en este fichero.
+All notable changes to this project are documented in this file.
 
-El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y el proyecto sigue [Semantic Versioning](https://semver.org/lang/es/).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/).
 
-Todo mantenedor, colaborador o agente de IA que trabaje en este repositorio debe actualizar este fichero con cada cambio significativo (nuevas características, correcciones o mejoras de documentación), explicando en prosa **el porqué** del cambio y no solo qué ficheros se tocaron: el objetivo es un historial legible para humanos.
+Every maintainer, contributor or AI agent working on this repository must update this file with each significant change (new features, fixes or documentation improvements), explaining in prose **why** the change was made and not just which files were touched: the goal is a history that humans can read.
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-08-05
+
+### Changed
+
+- The whole artifact is now written in English: the body of `SKILL.md`, all the files under `references/`, the README and this changelog. The repository was previously in a mixed state — an English frontmatter `description` and English emitted templates wrapped in Spanish prose — which is the worst of both worlds. English is the language of the repository's topics, description and commits, it matches the vocabulary the `description` competes with in the system prompt, and it is what makes contributions from non-Spanish speakers possible in a repository whose subject is open source collaboration.
+- The language of the instructions and the language of the generated documentation are now explicitly separate axes. Writing the skill in Spanish was never what made it able to produce Spanish documentation: the output language has always been a question in the survey, with English as the default. `SKILL.md` now says so outright so the model does not carry the instruction language over into the output.
+- This changelog uses the canonical Keep a Changelog section names (Added / Changed / Fixed) and links the English editions of the Keep a Changelog and Semantic Versioning specifications instead of the Spanish ones.
+- The README is now bilingual: `README.md` in English with `README.es.md` linked at the top, which is the standard pattern for this. The Spanish version is a full translation, not a stub.
+
+### Added
+
+- `references/localization.md`, holding the Spanish and Galician typographic conventions (sentence case in headings, the em dash reserved for asides and never used in place of a colon). They used to live inline in `SKILL.md`, so their context cost was paid on every invocation even when the documentation was going to be generated in English. They are now loaded only when the chosen language is not English, and new languages can be added without touching `SKILL.md`.
+
+### Fixed
+
+- The survey and the conflict-resolution step now accept answers in any language ("all", "todas", …), so switching the option list to English does not force the user to reply in English.
+- The `1.0.1` release was missing from this changelog entirely, even though the tag and the GitHub release existed and the `[1.1.0]` compare link already pointed at it. Its entry is now written up below.
+- Spanish leftovers inside emitted content: `Sí`/`No` cells in the SECURITY.md support table, inline comments inside the GitHub Actions YAML skeletons, branch examples such as `feature/nombre-funcion`, and the `Signed-off-by: Nombre <email>` trailer. These were being copied verbatim into the user's own repository.
+
 ## [1.1.0] - 2026-08-05
 
-### Añadido
+### Added
 
-- Distribución como plugin mediante marketplace (`.claude-plugin/plugin.json` y `.claude-plugin/marketplace.json`). Hasta ahora la única vía era clonar el repositorio en una ruta exacta: si la carpeta se llamaba de otro modo la skill no se descubría, no había versionado y actualizar dependía de acordarse de hacer `git pull`. Con el marketplace, instalar y actualizar son dos comandos y la versión queda declarada. El clon se mantiene como alternativa, y sigue siendo la vía de OpenCode, que no tiene sistema de plugins.
-- Paso 0 de comprobación antes de escribir: la skill lista qué artefactos ya existen en el repositorio y pregunta si sobrescribir, fusionar, omitir o escribir un `.new`. Antes generaba `README.md` y `LICENSE` directamente en la raíz, de modo que en un repositorio real machacaba los ficheros existentes sin avisar. Por defecto escribe `.new`: nunca se reemplaza nada sin confirmación explícita.
-- Paso final de verificación en bucle: comprueba que existe cada fichero marcado, que no queda ningún placeholder sin sustituir, que el `LICENSE` descargado no está vacío, que `reuse lint` pasa si se generó `REUSE.toml` y que los YAML de `.github/` parsean. Corrige y repite hasta tres veces, y declara explícitamente lo que no ha podido comprobar en vez de darlo por bueno.
-- `allowed-tools` en el frontmatter, derivado de lo que la skill toca de verdad, para documentar su alcance y reducir la fricción de permisos. No incluye `git`: la skill escribe documentación sobre firma de commits y protección de ramas, pero no ejecuta esas órdenes.
-- Índice al principio de `references/conventional-commits.md`, que había crecido por encima de las 100 líneas y era incómodo de recorrer.
+- Distribution as a plugin through a marketplace (`.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`). Until now the only route was cloning the repository into an exact path: if the folder had any other name the skill was not discovered, there was no versioning, and updating depended on remembering to `git pull`. With the marketplace, installing and updating are two commands and the version is declared. Cloning remains as an alternative, and is still the route for OpenCode, which has no plugin system.
+- A step 0 check before writing: the skill lists which artifacts already exist in the repository and asks whether to overwrite, merge, skip or write a `.new` file. It used to generate `README.md` and `LICENSE` straight into the root, so in a real repository it clobbered existing files without warning. The default is now to write `.new`: nothing is ever replaced without explicit confirmation.
+- A final verification loop: it checks that every marked file exists, that no placeholder is left unsubstituted, that the downloaded `LICENSE` is not empty, that `reuse lint` passes if `REUSE.toml` was generated, and that the `.github/` YAML files parse. It fixes and repeats up to three times, and explicitly reports what it could not check instead of assuming it passed.
+- `allowed-tools` in the frontmatter, derived from what the skill actually touches, to document its scope and reduce permission friction. It does not include `git`: the skill writes documentation about commit signing and branch protection, but it does not run those commands.
+- A table of contents at the top of `references/conventional-commits.md`, which had grown past 100 lines and was awkward to navigate.
 
-### Cambiado
+### Changed
 
-- La invocación pasa a estar bajo espacio de nombres: `/open-source:open-source`. Afecta también a quien tenga el repositorio clonado en `~/.claude/skills/`, porque la presencia de `.claude-plugin/plugin.json` hace que Claude Code lo cargue como plugin `open-source@skills-dir` en lugar de como skill suelta. En OpenCode no cambia nada y se sigue invocando como `/open-source`.
-- La `description` del frontmatter explica ahora qué hace la skill además de cuándo usarla, y en tercera persona, para que el modelo pueda decidir mejor cuándo activarla.
-- La tabla comparativa de licencias se mueve a `references/license.md`. Estaba en `SKILL.md`, así que su coste de contexto se pagaba en toda invocación aunque el usuario no fuese a generar ninguna licencia, lo que contradecía el propio *progressive disclosure* del proyecto.
-- Los placeholders pasan de `<NOMBRE>` a `{{NOMBRE}}`, porque los angulares se confunden con etiquetas XML. Se conservan los angulares allí donde los exige una especificación ajena (formato de Conventional Commits, mensajes por defecto de `git merge`/`git revert`, correo en las cabeceras SPDX y en el trailer `Signed-off-by`).
-- La resolución del SHA de las GitHub Actions deja de asumir que `gh` está instalado y autenticado: cae a la API pública con `curl` y, si tampoco hay red, obliga a preguntar en vez de inventarse el SHA, que rompería el workflow en la primera ejecución.
-- Instrucciones reformuladas para que no envejezcan ni dependan de un cliente concreto: se describe la encuesta sin nombrar la herramienta de selección de ningún cliente, y el aviso sobre generar textos de licencia a mano conserva el motivo pero ya no cita un código de error literal.
+- Invocation is now namespaced: `/open-source:open-source`. This also affects anyone with the repository cloned into `~/.claude/skills/`, because the presence of `.claude-plugin/plugin.json` makes Claude Code load it as the plugin `open-source@skills-dir` rather than as a standalone skill. Nothing changes in OpenCode, where it is still invoked as `/open-source`.
+- The frontmatter `description` now explains what the skill does as well as when to use it, and does so in the third person, so the model can decide better when to activate it.
+- The license comparison table moved to `references/license.md`. It used to live in `SKILL.md`, so its context cost was paid on every invocation even when the user was not going to generate a license at all, which contradicted the project's own *progressive disclosure*.
+- Placeholders changed from `<NAME>` to `{{NAME}}`, because angle brackets get confused with XML tags. Angle brackets are kept wherever an external specification requires them (the Conventional Commits format, the default `git merge`/`git revert` messages, and the email in SPDX headers and in the `Signed-off-by` trailer).
+- Resolving the SHA of a GitHub Action no longer assumes `gh` is installed and authenticated: it falls back to the public API with `curl` and, if there is no network either, it forces asking rather than inventing a SHA, which would break the workflow on its first run.
+- Instructions reworded so they neither age badly nor depend on a specific client: the survey is described without naming any client's selection tool, and the warning about generating license texts by hand keeps its reasoning but no longer quotes a literal error code.
 
-### Corregido
+### Fixed
 
-- `curl -o` podía sobrescribir un `LICENSE` existente saltándose el paso 0; ahora `references/license.md` obliga a respetar la ruta acordada.
-- Terminología unificada en `SKILL.md` ("skill", "opción marcada", "encuesta"), rutas de la tabla de enrutado convertidas en enlaces y HTML heredado (`<pre>`, `<sup>`) sustituido por markdown en `references/conventional-commits.md`.
+- `curl -o` could overwrite an existing `LICENSE`, bypassing step 0; `references/license.md` now requires respecting the agreed path.
+- Unified terminology in `SKILL.md` ("skill", "marked option", "survey"), routing table paths turned into links, and inherited HTML (`<pre>`, `<sup>`) replaced with markdown in `references/conventional-commits.md`.
+
+## [1.0.1] - 2026-07-18
+
+### Added
+
+- Compatibility with OpenCode, documented in the README together with its own installation paths. The skill format is an open standard, so it already worked there; what was missing was saying so and explaining that OpenCode also reads the Claude Code folders, so an existing clone is reused.
+- A guardrail in `references/license.md` against writing license texts by hand. Reproducing a long license word by word in the model output was slow, error-prone and could be blocked by the provider's output filters, which made the whole artifact fail; the text is now always downloaded from its canonical source.
+
+### Changed
+
+- More detailed license selection guidance in `SKILL.md`, so the user gets a real comparison before choosing rather than a bare list of identifiers.
+- Spanish and Galician typographic conventions added to `SKILL.md`, because the generated documentation was following English capitalization rules in headings regardless of the chosen language.
+
+### Fixed
+
+- Several corrections to `SKILL.md` for more predictable behaviour, so that the same request produces the same artifacts instead of depending on how the instructions were read.
 
 ## [1.0.0] - 2026-07-05
 
-### Añadido
+### Added
 
-- Publicación inicial de la skill `open-source` para Claude Code, creada para que configurar la gobernanza open source de un proyecto (de hackathon o real) no dependa de recordar de memoria qué documentos hacen falta ni qué debe contener cada uno.
-- `SKILL.md` con la encuesta inicial de 15 opciones (README, LICENSE, REUSE.toml, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, GOVERNANCE, CHANGELOG, plantillas de `.github/`, GitHub Actions, Dependabot, conventional commits, GPG + DCO, git flow y ARCHITECTURE_DECISIONS), la petición de datos condicionada a las opciones marcadas y la estructura mínima de ficheros de un proyecto open source.
-- Tabla de enrutado con *progressive disclosure*: el detalle de cada artefacto vive en su propio fichero de `references/` y solo se carga si su opción fue marcada, para mantener acotado el coste de contexto.
-- Las 15 referencias en `references/` con las buenas prácticas de cada artefacto según la FSF y la OSI.
-- Documentación del propio repositorio aplicando la skill a sí misma (*dogfooding*): `README.md` con instalación, uso y troubleshooting; `LICENSE` MIT; y este `CHANGELOG.md`.
+- Initial release of the `open-source` skill for Claude Code, built so that setting up the open source governance of a project (hackathon or real) does not depend on remembering from memory which documents are needed or what each one must contain.
+- `SKILL.md` with the initial 15-option survey (README, LICENSE, REUSE.toml, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, GOVERNANCE, CHANGELOG, `.github/` templates, GitHub Actions, Dependabot, conventional commits, GPG + DCO, git flow and ARCHITECTURE_DECISIONS), the data request conditioned on the marked options, and the minimum file structure of an open source project.
+- A routing table with *progressive disclosure*: the details of each artifact live in their own `references/` file and are loaded only if the option was marked, to keep the context cost bounded.
+- The 15 references in `references/` with the best practices for each artifact according to the FSF and the OSI.
+- Documentation of the repository itself by applying the skill to it (*dogfooding*): `README.md` with installation, usage and troubleshooting; an MIT `LICENSE`; and this `CHANGELOG.md`.
 
-[Unreleased]: https://github.com/igarbayo/open-source/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/igarbayo/open-source/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/igarbayo/open-source/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/igarbayo/open-source/compare/v1.0.1...v1.1.0
+[1.0.1]: https://github.com/igarbayo/open-source/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/igarbayo/open-source/releases/tag/v1.0.0

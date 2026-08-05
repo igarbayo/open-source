@@ -1,13 +1,13 @@
 # README.md
 
-El README.md es el primer punto de contacto para los usuarios y colaboradores potenciales. Debe ser claro, conciso y proporcionar toda la información necesaria para entender el proyecto, cómo usarlo y cómo contribuir.
+The README.md is the first point of contact for users and potential contributors. It must be clear, concise and provide all the information needed to understand the project, how to use it and how to contribute to it.
 
-La primera pregunta a la que responde es qué hace este proyecto y qué problema resuelve. Después seguimos el orden de quickstart first, advanced topics later.
+The first question it answers is what this project does and what problem it solves. After that, follow the order of quickstart first, advanced topics later.
 
-Badges al principio: REUSE (https://api.reuse.software/), OpenSSF Best Practices (https://www.bestpractices.dev/) y OpenSSF Scorecard (https://scorecard.dev/). Las tres **requieren registrar el proyecto** en cada plataforma y cumplir sus estándares. Si el proyecto aún no está registrado, no pongas una badge rota: deja la badge comentada en el markdown con una instrucción de cómo darse de alta, y añádela cuando exista. Estas badges muestran el compromiso del proyecto con las buenas prácticas de código abierto.
+Badges at the top: REUSE (https://api.reuse.software/), OpenSSF Best Practices (https://www.bestpractices.dev/) and OpenSSF Scorecard (https://scorecard.dev/). All three **require registering the project** on each platform and meeting its standards. If the project is not registered yet, do not add a broken badge: leave the badge commented out in the markdown together with an instruction on how to sign up, and add it once it exists. These badges show the project's commitment to open source best practices.
 
-El README.md incluirá un diagrama (ASCII o Mermaid) de la arquitectura del proyecto: componentes principales, interacciones entre ellos y flujo de datos si lo hay.
+The README.md must include a diagram (ASCII or Mermaid) of the project architecture: main components, how they interact, and the data flow if there is one.
 
-También incluirá ejemplos de uso para los casos que se definan, una tabla de plataformas/entornos soportados si aplica (los que estén cubiertos por los tests como mínimo) y un troubleshooting de fallos comunes al instalar o usar el repositorio.
+It must also include usage examples for the defined use cases, a table of supported platforms and environments if applicable (at minimum the ones covered by the tests), and a troubleshooting section for common failures when installing or using the repository.
 
-Tendrá: purpose (what this project solves), features, install, usage examples, configuration, compatibility, troubleshooting and support channels.
+It covers the purpose (what this project solves), features, installation, usage examples, configuration, compatibility, troubleshooting and support channels.

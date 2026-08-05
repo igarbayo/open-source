@@ -1,10 +1,10 @@
 # Dependabot (.github/dependabot.yml)
 
-Se configura Dependabot para mantener las dependencias del proyecto actualizadas y seguras mediante `.github/dependabot.yml`. Dependabot abre PRs con actualizaciones y alerta de CVEs en dependencias, lo que contribuye a mantener el proyecto seguro para usuarios y colaboradores.
+Configure Dependabot through `.github/dependabot.yml` to keep the project's dependencies up to date and secure. Dependabot opens PRs with updates and raises alerts for CVEs in dependencies, which helps keep the project safe for users and contributors.
 
-Antes de generar el fichero, **detecta los ecosistemas reales del repositorio** (mira los manifiestos: `package.json` → npm, `requirements.txt`/`pyproject.toml` → pip, `Cargo.toml` → cargo, `go.mod` → gomod, `pom.xml` → maven, `Dockerfile` → docker, ...). Añade siempre `github-actions` si existen workflows.
+Before generating the file, **detect the repository's actual ecosystems** (look at the manifests: `package.json` → npm, `requirements.txt`/`pyproject.toml` → pip, `Cargo.toml` → cargo, `go.mod` → gomod, `pom.xml` → maven, `Dockerfile` → docker, ...). Always add `github-actions` if there are workflows.
 
-Ejemplo (proyecto npm con workflows):
+Example (npm project with workflows):
 
 ```yaml
 version: 2
@@ -25,7 +25,7 @@ updates:
       interval: "weekly"
 ```
 
-Notas:
-- `schedule: weekly` como default razonable para hackathon/proyecto pequeño; los avisos de seguridad llegan igualmente en cuanto se publican.
-- Los `groups` agrupan actualizaciones minor/patch en una sola PR para reducir ruido; las major van en PR separada.
-- Un bloque `updates` por cada ecosistema/directorio detectado.
+Notes:
+- `schedule: weekly` is a reasonable default for a hackathon or small project; security advisories still arrive as soon as they are published.
+- `groups` bundles minor/patch updates into a single PR to reduce noise; major updates go in a separate PR.
+- One `updates` block per detected ecosystem and directory.

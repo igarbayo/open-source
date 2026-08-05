@@ -1,8 +1,8 @@
 # Conventional commits
 
-## Contenidos
+## Contents
 
-- [Formato](#formato)
+- [Format](#format)
 - [Initial commit](#initial-commit)
 - [Merge commit](#merge-commit)
 - [Revert commit](#revert-commit)
@@ -15,13 +15,13 @@
 - [Versioning](#versioning)
 - [Examples](#examples)
 
-## Formato
+## Format
 
-Se debe seguir la convención de commits convencional para mantener un historial de commits claro y estructurado. Esto implica utilizar un formato específico para los mensajes de commit.
+Follow the conventional commits convention to keep a clear, structured commit history. That means using a specific format for commit messages.
 
-> Nota: esta guía está basada en la de qoomon (commit-conventions). Los tipos `ops` y `style` son extensiones de esa guía, no forman parte del estándar de conventionalcommits.org.
+> Note: this guide is based on qoomon's (commit-conventions). The `ops` and `style` types are extensions of that guide; they are not part of the conventionalcommits.org standard.
 
-El formato utilizado será:
+The format used is:
 
 ```
 <type>(<optional scope>): <description>
@@ -43,7 +43,7 @@ chore: init
 Merge branch '<branch name>'
 ```
 
-*Sigue el mensaje por defecto de `git merge`.*
+*Follows the default `git merge` message.*
 
 ## Revert commit
 
@@ -51,7 +51,7 @@ Merge branch '<branch name>'
 Revert "<reverted commit subject line>"
 ```
 
-*Sigue el mensaje por defecto de `git revert`.*
+*Follows the default `git revert` message.*
 
 ## Types
 - Changes relevant to the API or UI:

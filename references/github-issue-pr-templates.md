@@ -1,6 +1,6 @@
-# Plantillas de issues y pull requests (.github/)
+# Issue and pull request templates (.github/)
 
-Las plantillas guían a los colaboradores para que aporten la información que los mantenedores necesitan, y las etiquetas predefinidas facilitan la gestión y priorización. Se generan estos ficheros (plantillas base en inglés; **traducir al idioma elegido** si no es inglés, manteniendo el frontmatter):
+Templates guide contributors into providing the information maintainers need, and predefined labels make triage and prioritization easier. Generate these files. The base templates below are written in English: if the chosen documentation language is not English, **translate their body into that language** following [localization.md](localization.md), keeping the frontmatter keys untouched.
 
 ## .github/ISSUE_TEMPLATE/bug_report.md
 
@@ -88,4 +88,4 @@ Short description and motivation. Link related issues (Closes #123).
 - [ ] Commits are signed off (`git commit -s`, DCO)
 ```
 
-Ajusta el checklist a las opciones realmente implementadas (p. ej., quita la línea de DCO si no se adoptó, o la de CHANGELOG si no existe).
+Adjust the checklist to the options actually implemented (e.g. drop the DCO line if it was not adopted, or the CHANGELOG one if there is no changelog).

@@ -1,25 +1,25 @@
-# Autenticación de commits: GPG + DCO
+# Commit authentication: GPG + DCO
 
-Son **dos mecanismos distintos e independientes**; este proyecto adopta ambos:
+These are **two distinct, independent mechanisms**; this project adopts both:
 
-## Firma GPG (autentica al autor)
+## GPG signing (authenticates the author)
 
-Todos los commits vendrán firmados con GPG (`git commit -S`, o automático con la configuración):
+Every commit must be signed with GPG (`git commit -S`, or automatically through configuration):
 
 ```
 git config --global user.signingkey {{GPG_KEY_ID}}
 git config --global commit.gpgsign true
 ```
 
-Se restringirá en GitHub que solo se acepten commits firmados, mediante reglas de protección en la sección Branches del repositorio, sobre la rama principal (main o master) y cualquier rama de desarrollo (develop, staging, ...). Esto garantiza que se pueda verificar la identidad del autor de cada cambio.
+Configure GitHub to accept only signed commits, through protection rules in the repository's Branches section, on the main branch (main or master) and on any development branch (develop, staging, ...). This guarantees that the identity of each change's author can be verified.
 
-Además, se colocará un documento docs/GPG_KEY.md que explique cómo generar una clave GPG, cómo configurarla en Git y GitHub, y cómo verificar la autenticidad de los commits firmados (`git log --show-signature`).
+Also add a `docs/GPG_KEY.md` document explaining how to generate a GPG key, how to configure it in Git and GitHub, and how to verify the authenticity of signed commits (`git log --show-signature`).
 
-## DCO (certifica el derecho a contribuir)
+## DCO (certifies the right to contribute)
 
-El DCO (Developer Certificate of Origin) no es una firma criptográfica: es una declaración legal de que el colaborador tiene derecho a aportar su contribución bajo la licencia del proyecto.
+The DCO (Developer Certificate of Origin) is not a cryptographic signature: it is a legal statement that the contributor has the right to submit their contribution under the project's license.
 
-- Se incluirá en la raíz del repositorio un fichero `DCO` con el texto íntegro del Developer Certificate of Origin 1.1 (https://developercertificate.org/).
-- Cada commit debe llevar el trailer `Signed-off-by: Nombre <email>`, que se añade con `git commit -s` (minúscula; distinto de `-S` de GPG — se pueden combinar: `git commit -s -S`).
-- Opcionalmente, se puede exigir en CI con la GitHub App "DCO" o una action equivalente que rechace PRs con commits sin sign-off.
-- CONTRIBUTING.md debe explicar el sign-off como requisito del proceso de PR.
+- Add a `DCO` file at the root of the repository with the full text of the Developer Certificate of Origin 1.1 (https://developercertificate.org/).
+- Every commit must carry the `Signed-off-by: Name <email>` trailer, added with `git commit -s` (lowercase; different from GPG's `-S` — they can be combined: `git commit -s -S`).
+- Optionally, it can be enforced in CI with the "DCO" GitHub App or an equivalent action that rejects PRs containing commits without a sign-off.
+- CONTRIBUTING.md must explain the sign-off as a requirement of the PR process.

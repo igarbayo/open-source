@@ -1,7 +1,7 @@
 # CHANGELOG.md
 
-El CHANGELOG.md es un documento que registra todos los cambios realizados en el proyecto a lo largo del tiempo. Debe seguir un formato claro y consistente, como el formato de Keep a Changelog, para facilitar la comprensión de los cambios por parte de los usuarios y colaboradores.
+The CHANGELOG.md records every change made to the project over time. It must follow a clear and consistent format, such as Keep a Changelog, so that users and contributors can understand the changes easily.
 
-Se debe instruir a todos los mantenedores y colaboradores para que actualicen el CHANGELOG.md cada vez que se realice un cambio significativo en el proyecto, como la adición de nuevas características, corrección de errores o mejoras en la documentación. Esto ayudará a mantener un registro claro y actualizado de la evolución del proyecto, lo que facilitará la colaboración y la comunicación entre los miembros del equipo y los usuarios. También se deberá instruir a todo agente de IA que se utilice para desarrollar a que actualice el CHANGELOG.md.
+Instruct every maintainer and contributor to update the CHANGELOG.md whenever a significant change is made to the project, such as adding new features, fixing bugs or improving the documentation. This keeps a clear, up-to-date record of how the project evolves, which makes collaboration and communication between team members and users easier. Any AI agent used for development must be instructed to update the CHANGELOG.md as well.
 
-Incluimos para cada cambio una entrada en prosa legible, que no solo nombra ficheros cambiados, sino que explica siempre el porqué. El punto importante es que sea un human-readable history.
+Each change gets a readable prose entry that does not just name the files that changed but always explains why. The important point is that it reads as a human-readable history.

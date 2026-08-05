@@ -1,139 +1,147 @@
 # open-source
 
-Skill en formato **Agent Skills** (estándar abierto) para **Claude Code** y **OpenCode** que configura la gobernanza open source completa de un proyecto siguiendo las buenas prácticas de la FSF y la OSI. Resuelve el problema de arrancar (o liberar) un repositorio open source, de **hackathon** o real.
+**English** · [Español](README.es.md)
 
-Evita tener que recordar qué documentos hacen falta, qué debe contener cada uno o dónde va cada fichero. La skill pregunta qué partes se quieren implementar y genera solo esas, pidiendo únicamente los datos relevantes.
+A skill in the **Agent Skills** format (an open standard) for **Claude Code** and **OpenCode** that sets up the complete open source governance of a project following FSF and OSI best practices. It solves the problem of starting (or releasing) an open source repository, whether it comes from a **hackathon** or from real work.
 
-## Características
+It removes the need to remember which documents are required, what each one must contain, or where each file goes. The skill asks which parts you want to implement, generates only those, and asks only for the data they need.
 
-La skill puede generar, a elección del usuario mediante una encuesta inicial, los siguientes artefactos:
+> The skill's instructions are written in English, but **the documentation it generates can be in any language**: that is one of the questions it asks, with English as the default.
 
-| Artefacto | Descripción |
+## Features
+
+Through an initial survey, the skill can generate the following artifacts at the user's choice:
+
+| Artifact | Description |
 |---|---|
-| **README.md** | Punto de entrada del proyecto: propósito, instalación, ejemplos, troubleshooting. |
-| **LICENSE** | Licencia OSI (MIT, Apache-2.0, BSD-3-Clause, GPL-3.0, AGPL-3.0) con recomendación guiada. |
-| **REUSE.toml** | Metadatos de licencia conformes con la especificación REUSE/SPDX. |
-| **CONTRIBUTING.md** | Guía para contribuidores, incluyendo setup, estilo, commits, tiempos de revisión. |
-| **SECURITY.md** | Política de seguridad alineada con el EU CRA. |
-| **CODE_OF_CONDUCT.md** | Código de conducta basado en el Contributor Covenant. |
-| **GOVERNANCE.md** | Toma de decisiones, roles y resolución de conflictos. |
-| **CHANGELOG.md** | Historial de cambios en formato Keep a Changelog. |
-| **Plantillas de issues y pull requests** | En `.github/`. |
-| **Workflows de GitHub Actions** | En `.github/workflows/` (build, lint, test, seguridad). |
-| **Dependabot** | En `.github/`, para actualizaciones automáticas de dependencias y CVEs. |
-| **Conventional commits** | Convención de mensajes de commit. |
-| **Autenticación de commits con GPG + DCO** | Firma y certificación de origen de los commits. |
-| **Git flow y Pull Requests** | Flujo de ramas y revisión. |
-| **ARCHITECTURE_DECISIONS.md** | Registro de decisiones de diseño. |
+| **README.md** | Project entry point: purpose, installation, examples, troubleshooting. |
+| **LICENSE** | OSI license (MIT, Apache-2.0, BSD-3-Clause, GPL-3.0, AGPL-3.0) with a guided recommendation. |
+| **REUSE.toml** | Licensing metadata compliant with the REUSE/SPDX specification. |
+| **CONTRIBUTING.md** | Contributor guide, covering setup, style, commits and review times. |
+| **SECURITY.md** | Security policy aligned with the EU CRA. |
+| **CODE_OF_CONDUCT.md** | Code of conduct based on the Contributor Covenant. |
+| **GOVERNANCE.md** | Decision-making, roles and conflict resolution. |
+| **CHANGELOG.md** | Change history in Keep a Changelog format. |
+| **Issue and pull request templates** | In `.github/`. |
+| **GitHub Actions workflows** | In `.github/workflows/` (build, lint, test, security). |
+| **Dependabot** | In `.github/`, for automatic dependency and CVE updates. |
+| **Conventional commits** | Commit message convention. |
+| **Commit authentication with GPG + DCO** | Commit signing and certificate of origin. |
+| **Git flow and pull requests** | Branching and review flow. |
+| **ARCHITECTURE_DECISIONS.md** | Record of design decisions. |
 
-Toda la documentación generada está escrita en lenguaje natural, orientada a humanos y con ejemplos.
+All the generated documentation is written in natural language, aimed at humans and full of examples.
 
-## Arquitectura
+## Architecture
 
-La skill usa *progressive disclosure*: `SKILL.md` contiene la encuesta y una tabla de enrutado; el detalle de cada artefacto vive en un fichero de `references/` que solo se carga si su opción fue marcada, manteniendo acotado el coste de contexto.
+The skill uses *progressive disclosure*: `SKILL.md` holds the survey and a routing table; the details of each artifact live in a `references/` file that is loaded only if its option was marked, which keeps the context cost bounded.
 
 ```mermaid
 flowchart TD
-    A[Usuario invoca la skill] --> B[SKILL.md]
-    B --> C[Encuesta: ¿qué artefactos generar?]
-    C --> D[Petición de datos solo para las opciones marcadas]
-    D --> E{Tabla de enrutado}
+    A[User invokes the skill] --> B[SKILL.md]
+    B --> C[Survey: which artifacts to generate?]
+    C --> D[Data requested only for the marked options]
+    D --> E{Routing table}
     E -->|README.md| R1[references/readme.md]
     E -->|LICENSE| R2[references/license.md]
     E -->|CHANGELOG.md| R3[references/changelog.md]
-    E -->|"... (12 referencias más)"| R4[references/*.md]
-    R1 --> F[Artefactos generados en el proyecto del usuario]
+    E -->|"... (12 more references)"| R4[references/*.md]
+    D -->|"language ≠ English"| R5[references/localization.md]
+    R1 --> F[Artifacts generated in the user's project]
     R2 --> F
     R3 --> F
     R4 --> F
+    R5 --> F
 ```
 
-## Instalación
+## Installation
 
-### Claude Code, vía marketplace (recomendado)
+### Claude Code, via marketplace (recommended)
 
-Desde una sesión de Claude Code:
+From a Claude Code session:
 
 ```
 /plugin marketplace add igarbayo/open-source
 /plugin install open-source@igarbayo
 ```
 
-Es la vía recomendada porque trae versionado y actualizaciones: cuando se publica una versión nueva, basta con
+This is the recommended route because it brings versioning and updates: when a new version is published, all it takes is
 
 ```
 /plugin marketplace update igarbayo
 /plugin update open-source@igarbayo
 ```
 
-### Claude Code, vía clon manual (alternativa)
+### Claude Code, via manual clone (alternative)
 
-Si prefieres no usar el marketplace:
+If you would rather not use the marketplace:
 
 ```bash
-# Personal (disponible en todos los proyectos)
+# Personal (available in every project)
 git clone https://github.com/igarbayo/open-source.git ~/.claude/skills/open-source
 
-# O por proyecto
+# Or per project
 git clone https://github.com/igarbayo/open-source.git .claude/skills/open-source
 ```
 
-Como el repositorio incluye `.claude-plugin/plugin.json`, Claude Code lo carga como plugin `open-source@skills-dir` en vez de como skill suelta, así que la invocación es la misma que con el marketplace. Dos avisos para la instalación por proyecto: requiere aceptar el diálogo de confianza del workspace, y hay que arrancar Claude Code desde la raíz del repositorio (los plugins de `@skills-dir` no se buscan hacia arriba desde un subdirectorio).
+Because the repository includes `.claude-plugin/plugin.json`, Claude Code loads it as the plugin `open-source@skills-dir` rather than as a standalone skill, so invocation is the same as with the marketplace. Two caveats for the per-project install: it requires accepting the workspace trust dialog, and Claude Code must be started from the repository root (`@skills-dir` plugins are not searched for upwards from a subdirectory).
 
 ### OpenCode
 
 ```bash
-# Personal (disponible en todos los proyectos)
+# Personal (available in every project)
 git clone https://github.com/igarbayo/open-source.git ~/.config/opencode/skills/open-source
 
-# O por proyecto
+# Or per project
 git clone https://github.com/igarbayo/open-source.git .opencode/skills/open-source
 ```
 
-OpenCode no tiene sistema de plugins: ignora `.claude-plugin/` y carga el repositorio como skill normal. También lee las carpetas de Claude Code (`~/.claude/skills/` y `.claude/skills/`): si ya la clonaste ahí, la detecta sin volver a clonar.
+OpenCode has no plugin system: it ignores `.claude-plugin/` and loads the repository as a regular skill. It also reads the Claude Code folders (`~/.claude/skills/` and `.claude/skills/`), so if you already cloned it there, it is picked up without cloning again.
 
-## Uso
+## Usage
 
-Desde una sesión de **Claude Code** u **OpenCode** en el proyecto que quieres documentar, invoca la skill. El comando depende de cómo la hayas instalado, porque como plugin queda bajo su propio espacio de nombres:
+From a **Claude Code** or **OpenCode** session in the project you want to document, invoke the skill. The command depends on how you installed it, because as a plugin it lives under its own namespace:
 
-| Instalación | Se carga como | Invocación |
+| Installation | Loaded as | Invocation |
 |---|---|---|
 | Marketplace | plugin `open-source@igarbayo` | `/open-source:open-source` |
-| Clon en `~/.claude/skills/` o `.claude/skills/` | plugin `open-source@skills-dir` | `/open-source:open-source` |
-| Clon en OpenCode | skill normal | `/open-source` |
+| Clone in `~/.claude/skills/` or `.claude/skills/` | plugin `open-source@skills-dir` | `/open-source:open-source` |
+| Clone in OpenCode | regular skill | `/open-source` |
 
-En los tres casos puedes simplemente pedirlo en lenguaje natural, sin recordar el comando:
+In all three cases you can simply ask for it in natural language, without remembering the command:
 
 ```
-Configura la gobernanza open source de este proyecto
+Set up the open source governance of this project
 ```
 
-La skill hará entonces dos rondas de preguntas:
+The skill then runs two rounds of questions:
 
-1. **Encuesta de opción múltiple** con las partes de la estrategia open source a implementar (README, LICENSE, REUSE.toml, CONTRIBUTING, SECURITY, plantillas de `.github/`, etc., o todo lo anterior).
-2. **Datos relevantes solo para lo marcado**: idioma de la documentación (inglés por defecto), nombre del proyecto, licencia elegida, mantenedores, nombre del hackathon si aplica, reglas de gobernanza…
+1. **A multiple-choice survey** with the parts of the open source strategy to implement (README, LICENSE, REUSE.toml, CONTRIBUTING, SECURITY, `.github/` templates, etc., or all of the above).
+2. **Data relevant only to what was marked**: documentation language (English by default), project name, chosen license, maintainers, hackathon name if applicable, governance rules…
 
-Con esas respuestas genera los ficheros directamente en tu proyecto, en las rutas estándar (raíz, `docs/`, `.github/`).
+With those answers it generates the files directly in your project, at the standard paths (root, `docs/`, `.github/`).
 
-## Compatibilidad
+If you pick a language other than English, the skill additionally loads `references/localization.md` and applies its typographic conventions (for Spanish and Galician: sentence case in headings, and the em dash reserved for asides).
 
-- Requiere una CLI compatible con el formato **Agent Skills**: **Claude Code** u **OpenCode**.
-- **Claude Code**: por marketplace (requiere una versión con soporte de plugins, `/plugin`), o clonada a nivel **personal** (`~/.claude/skills/`) o de **proyecto** (`.claude/skills/`).
-- **OpenCode**: no tiene marketplace de plugins, así que su vía es el clon. Rutas propias `~/.config/opencode/skills/` (personal) y `.opencode/skills/` (proyecto); además lee `~/.claude/skills/` y `.claude/skills/`, por lo que reutiliza la instalación de Claude Code.
+## Compatibility
+
+- Requires a CLI compatible with the **Agent Skills** format: **Claude Code** or **OpenCode**.
+- **Claude Code**: through the marketplace (requires a version with plugin support, `/plugin`), or cloned at the **personal** (`~/.claude/skills/`) or **project** (`.claude/skills/`) level.
+- **OpenCode**: it has no plugin marketplace, so cloning is the way. It has its own paths, `~/.config/opencode/skills/` (personal) and `.opencode/skills/` (project); it also reads `~/.claude/skills/` and `.claude/skills/`, so it reuses the Claude Code installation.
 
 ## Troubleshooting
 
-| Problema | Causa y solución |
+| Problem | Cause and fix |
 |---|---|
-| `/plugin install` no encuentra el plugin | El catálogo local está desactualizado. Ejecuta `/plugin marketplace update igarbayo` y vuelve a intentarlo. Comprueba lo que tienes instalado con `claude plugin list`. |
-| Instalé por marketplace pero `/open-source` no existe | Como plugin, el comando está bajo su espacio de nombres: es `/open-source:open-source`. Ver la tabla de la sección [Uso](#uso). |
-| La skill se carga pero falla al generar un artefacto | La tabla de enrutado usa rutas relativas (`references/*.md`). No muevas la carpeta `references/` ni renombres sus ficheros. |
-| Genera documentación en un idioma inesperado | El idioma por defecto es inglés; indícalo explícitamente cuando la skill pregunte los datos. |
+| `/plugin install` cannot find the plugin | The local catalog is out of date. Run `/plugin marketplace update igarbayo` and try again. Check what you have installed with `claude plugin list`. |
+| I installed via the marketplace but `/open-source` does not exist | As a plugin, the command lives under its namespace: it is `/open-source:open-source`. See the table in the [Usage](#usage) section. |
+| The skill loads but fails while generating an artifact | The routing table uses relative paths (`references/*.md`). Do not move the `references/` folder or rename its files. |
+| It generates documentation in an unexpected language | The default language is English, regardless of the language you speak to the skill in; state it explicitly when the skill asks for the data. |
 
-## Soporte
+## Support
 
-¿Dudas, errores o propuestas de mejora? Abre un [issue en GitHub](https://github.com/igarbayo/open-source/issues).
+Questions, bugs or improvement ideas? Open an [issue on GitHub](https://github.com/igarbayo/open-source/issues).
 
-## Licencia
+## License
 
-Este proyecto se distribuye bajo la licencia [MIT](LICENSE). Como todo software open source, se proporciona **sin garantías de ningún tipo** (*no warranties*).
+This project is distributed under the [MIT](LICENSE) license. Like all open source software, it is provided **with no warranties of any kind**.

@@ -1,11 +1,11 @@
 # CONTRIBUTING.md
 
-Este documento empezará siempre dando las gracias a los colaboradores y lectores por su interés en contribuir y en investigar nuestro repositorio. Además, debemos generar una expectativa sobre cuánto tiempo se va a tardar en revisar y resolver una contribución, aunque sea mucho. La expectativa será realista, así que si se trata de estudiantes, se especifica que el tiempo no está fijo y que puede ser muy largo debido a la carga académica.
+This document must always start by thanking contributors and readers for their interest in contributing to and exploring the repository. It must also set an expectation about how long it will take to review and resolve a contribution, even if that is a long time. The expectation must be realistic, so if the maintainers are students, state that the time is not fixed and can be very long because of their academic workload.
 
-Empieza con una estructura similar a "Thank you so much for taking the time to read this. It genuinely means a lot. {{PROJECT_NAME}} is a small project born at {{HACKATHON_NAME}}, and the fact that you are here considering contributing to it is something we do not take for granted" (traducir al idioma elegido para la documentación si no es inglés).
+Open with something along the lines of "Thank you so much for taking the time to read this. It genuinely means a lot. {{PROJECT_NAME}} is a small project born at {{HACKATHON_NAME}}, and the fact that you are here considering contributing to it is something we do not take for granted". If the chosen documentation language is not English, translate it following [localization.md](localization.md).
 
-Explicará las dependencias y pasos de compilación paso a paso, con fork, rama descriptiva, compilación limpia, merge por >= 1 maintainer.
+It must explain the dependencies and build steps one by one, covering fork, descriptive branch, clean build and merge by >= 1 maintainer.
 
-Sobre los estándares de código: deriva el estilo del código existente del proyecto (formatter o linter ya configurado — .editorconfig, prettier, black, clang-format...). Si no existe ninguno, propón el estándar del lenguaje (PEP 8, gofmt, Prettier con defaults...) en lugar de imponer uno arbitrario. También se incluirá la estructura de los conventional commits, explicada más adelante, y el sign-off DCO si se adoptó (`git commit -s`).
+On coding standards: derive the style from the project's existing code (a formatter or linter that is already configured — .editorconfig, prettier, black, clang-format...). If there is none, propose the language's own standard (PEP 8, gofmt, Prettier with defaults...) instead of imposing an arbitrary one. It must also include the conventional commits structure, explained later, and the DCO sign-off if it was adopted (`git commit -s`).
 
-Tendrá un how to set up env, coding standards, tests, PR process, commit conventions y review expectations. Define la "definition of done" para contributions.
+It covers how to set up the environment, coding standards, tests, the PR process, commit conventions and review expectations. It defines the "definition of done" for contributions.

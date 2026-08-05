@@ -2,8 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "open-source",
   "displayName": "Open Source Governance",
-  "description": "Genera la gobernanza open source completa de un repositorio siguiendo las buenas prácticas de la FSF y la OSI.",
-  "version": "1.1.0",
+  "description": "Generates the complete open source governance of a repository following FSF and OSI best practices.",
+  "version": "1.2.0",
   "author": {
     "name": "igarbayo",
     "url": "https://github.com/igarbayo"

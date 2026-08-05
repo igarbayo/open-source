@@ -1,35 +1,35 @@
-# Workflows de GitHub Actions (.github/workflows/)
+# GitHub Actions workflows (.github/workflows/)
 
-Se automatizan build, lint, tests y seguridad como CI en push y pull request. Scorecard y CodeQL reportan vulnerabilidades y malas prácticas en la pestaña Security del repositorio.
+Build, lint, tests and security are automated as CI on push and pull request. Scorecard and CodeQL report vulnerabilities and bad practices in the repository's Security tab.
 
-Reglas de seguridad de los workflows (obligatorias):
-- `permissions: read-all` a nivel de workflow; elevación mínima y justificada por job donde haga falta.
-- Todas las actions de terceros **fijadas a SHA de commit completo**, nunca a tags mutables (elimina el riesgo de tag hijacking en supply chain). Escribe `uses: owner/action@{{SHA}} # vX.Y.Z` y **resuelve el SHA real** del tag antes de generar el fichero.
+Workflow security rules (mandatory):
+- `permissions: read-all` at workflow level; minimal, justified elevation per job where needed.
+- Every third-party action **pinned to a full commit SHA**, never to mutable tags (this removes the risk of supply-chain tag hijacking). Write `uses: owner/action@{{SHA}} # vX.Y.Z` and **resolve the real SHA** of the tag before generating the file.
 
-### Cómo resolver el SHA de un tag
+### How to resolve the SHA of a tag
 
-No des por hecho que hay ninguna herramienta instalada: prueba en este orden y usa la primera que funcione.
+Do not assume any tool is installed: try these in order and use the first one that works.
 
-1. Si `gh` está disponible y autenticado (`gh auth status`):
+1. If `gh` is available and authenticated (`gh auth status`):
 
    ```bash
    gh api repos/{{OWNER}}/{{ACTION}}/git/ref/tags/{{TAG}} --jq .object.sha
    ```
 
-2. Si no, con `curl` contra la API pública (no requiere autenticación; el límite es de 60 peticiones/hora por IP):
+2. Otherwise, with `curl` against the public API (no authentication needed; the limit is 60 requests per hour per IP):
 
    ```bash
    curl -sSL https://api.github.com/repos/{{OWNER}}/{{ACTION}}/git/ref/tags/{{TAG}}
-   # p. ej. https://api.github.com/repos/actions/checkout/git/ref/tags/v4.2.2
+   # e.g. https://api.github.com/repos/actions/checkout/git/ref/tags/v4.2.2
    ```
 
-   El SHA está en `.object.sha`. Si `.object.type` es `tag` (tag anotado), ese SHA es el del objeto tag: sigue el campo `.object.url` para obtener el commit real.
+   The SHA is in `.object.sha`. If `.object.type` is `tag` (an annotated tag), that SHA belongs to the tag object: follow the `.object.url` field to get the real commit.
 
-3. Si tampoco hay `curl` o no hay red, **no inventes el SHA**: abre la página de releases de la action (`https://github.com/{{OWNER}}/{{ACTION}}/releases`) o pregunta al usuario, y deja el fichero con el marcador `@{{SHA}}` documentado hasta tener el valor. Un SHA inventado rompe el workflow en el primer run.
+3. If there is no `curl` either, or no network, **do not invent the SHA**: open the action's releases page (`https://github.com/{{OWNER}}/{{ACTION}}/releases`) or ask the user, and leave the file with the documented `@{{SHA}}` marker until you have the value. An invented SHA breaks the workflow on its first run.
 
-**Adapta los comandos de build/lint/test al stack real del proyecto** — léelo del repo (package.json scripts, Makefile, pyproject.toml...), no lo inventes. Si el proyecto no compila (p. ej. Python puro), omite build.yml. Esqueletos:
+**Adapt the build/lint/test commands to the project's real stack** — read it from the repo (package.json scripts, Makefile, pyproject.toml...), do not make it up. If the project does not compile (e.g. plain Python), skip build.yml. Skeletons:
 
-## build.yml / test.yml / lint.yml (mismo patrón, cambia el paso final)
+## build.yml / test.yml / lint.yml (same pattern, only the last step changes)
 
 ```yaml
 name: build
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@{{SHA}} # vX.Y.Z
-      - uses: actions/setup-node@{{SHA}} # vX.Y.Z — o setup-python/setup-go según stack
+      - uses: actions/setup-node@{{SHA}} # vX.Y.Z — or setup-python/setup-go depending on the stack
         with:
           node-version: 22
       - run: npm ci
@@ -87,8 +87,8 @@ jobs:
       - uses: actions/checkout@{{SHA}} # vX.Y.Z
       - uses: github/codeql-action/init@{{SHA}} # vX.Y.Z
         with:
-          languages: javascript # ajustar a los lenguajes del repo
+          languages: javascript # adjust to the repository's languages
       - uses: github/codeql-action/analyze@{{SHA}} # vX.Y.Z
 ```
 
-Se pueden añadir notificaciones de estado para mantener informado al equipo, pero los cuatro workflows anteriores son la base mínima.
+Status notifications can be added to keep the team informed, but the four workflows above are the minimum baseline.

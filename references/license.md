@@ -1,15 +1,15 @@
 # LICENSE
 
-> **IMPORTANTE: no generes el texto de la licencia a mano.** Los textos de licencia
-> largos (GPL-3.0, AGPL-3.0, Apache-2.0, etc.) tienen decenas de KB. Reproducirlos
-> palabra por palabra en la salida del modelo es lento, propenso a erratas y puede
-> ser bloqueado por los filtros de salida del proveedor, con lo que la generación del
-> artefacto falla. **Descarga siempre el texto desde la fuente canónica** para que el
-> fichero sea idéntico byte a byte al oficial:
+> **IMPORTANT: do not generate the license text by hand.** Long license texts
+> (GPL-3.0, AGPL-3.0, Apache-2.0, etc.) are tens of KB. Reproducing them word by
+> word in the model output is slow, error-prone and may be blocked by the
+> provider's output filters, which makes the whole artifact fail.
+> **Always download the text from its canonical source** so the file is
+> byte-for-byte identical to the official one:
 >
 > ```bash
 > mkdir -p LICENSES
-> # Sustituye {{LICENSE_ID}} y la URL por la licencia elegida:
+> # Replace {{LICENSE_ID}} and the URL with the chosen license:
 > #   MIT           -> https://raw.githubusercontent.com/spdx/license-list-data/main/text/MIT.txt
 > #   Apache-2.0    -> https://www.apache.org/licenses/LICENSE-2.0.txt
 > #   BSD-3-Clause  -> https://raw.githubusercontent.com/spdx/license-list-data/main/text/BSD-3-Clause.txt
@@ -19,43 +19,44 @@
 > cp LICENSE LICENSES/{{LICENSE_ID}}.txt
 > ```
 >
-> Para MIT/BSD (que llevan huecos `[year]`/`[fullname]`) descarga la plantilla y luego
-> edita únicamente esos campos sobre el fichero descargado; el resto del texto no se
-> teclea nunca a mano.
+> For MIT/BSD (which carry `[year]`/`[fullname]` slots) download the template and
+> then edit only those fields in the downloaded file; the rest of the text is
+> never typed by hand.
 >
-> **Ojo con `curl -o`: sobrescribe sin avisar.** Si en el paso 0 de SKILL.md se detectó
-> que ya existe un `LICENSE` (o `LICENSES/{{LICENSE_ID}}.txt`) y el usuario no pidió sobrescribir,
-> descarga a la ruta acordada (`LICENSE.new`, etc.) en lugar de a `LICENSE`.
+> **Careful with `curl -o`: it overwrites without warning.** If step 0 of SKILL.md
+> found that a `LICENSE` (or `LICENSES/{{LICENSE_ID}}.txt`) already exists and the user
+> did not ask to overwrite it, download to the agreed path (`LICENSE.new`, etc.) instead
+> of to `LICENSE`.
 
-Se incluye el fichero de la licencia en la raíz del repositorio y también en la carpeta LICENSES. En la carpeta, tiene formato .txt. También se incluirá en la carpeta LICENSES/ cualquier otra cláusula adicional que sea necesaria para el software o el tipo de licencia, como BSD-3-Clause.txt.
+The license file goes both at the root of the repository and in the LICENSES folder. Inside that folder it uses the .txt extension. The LICENSES/ folder must also contain any additional clause the software or the license type requires, such as BSD-3-Clause.txt.
 
-Se debe tener en cuenta:
-- Add SPDX headers in source files where possible, or use '.license' sidecar files when not.
-- Keep license texts in 'LICENSES/' named by SPDX identifiers (e.g. 'LICENSES/Apache-2.0.txt').
-- Ensure every license used has a corresponding text file and no unused licenses are included.
+Keep in mind:
+- Add SPDX headers in source files where possible, or use `.license` sidecar files when not.
+- Keep license texts in `LICENSES/` named by SPDX identifiers (e.g. `LICENSES/Apache-2.0.txt`).
+- Ensure every license used has a corresponding text file and that no unused licenses are included.
 - Use OSI-approved licenses and correct SPDX license expressions.
 
-Es necesario colocar un documento docs/COMPONENTS_LICENSE.md que explique todos los detalles de por qué se ha escogido una licencia particular para el proyecto, incluyendo cualquier consideración legal o de compatibilidad con otras licencias. Con otras licencias incluimos las licencias de todas las librerías, dependencias y assets usados en el proyecto, así como cualquier restricción o requisito adicional que pueda imponer la licencia elegida.
+Add a `docs/COMPONENTS_LICENSE.md` document explaining in full why a particular license was chosen for the project, including any legal consideration or compatibility concern with other licenses. "Other licenses" here means the licenses of every library, dependency and asset used in the project, as well as any extra restriction or requirement the chosen license imposes.
 
-## Tabla-resumen para elegir licencia
+## Summary table for choosing a license
 
-**Antes de preguntar al usuario qué licencia quiere, imprime por pantalla esta tabla tal cual** para ayudarle a decidir:
+**Before asking the user which license they want, print this table on screen as it is** to help them decide:
 
-| Licencia | Tipo | En una frase |
+| License | Type | In one sentence |
 |----------|------|--------------|
-| **MIT** | Permisiva | La más simple y popular: haz lo que quieras con el código, solo conserva el aviso de copyright. Máxima adopción, sin cláusula de patentes. |
-| **Apache-2.0** | Permisiva | Como MIT pero con concesión explícita de patentes y protección frente a demandas; recomendada para proyectos con implicaciones de patentes o respaldo empresarial. |
-| **BSD-3-Clause** | Permisiva | Muy parecida a MIT, añade una cláusula que prohíbe usar el nombre de los autores para promocionar derivados sin permiso. |
-| **GPL-3.0** | Copyleft | Cualquier obra derivada debe distribuirse bajo la misma licencia (código abierto obligatorio). Protege que el software siga siendo libre, pero reduce su adopción comercial. |
-| **AGPL-3.0** | Network copyleft | GPL-3.0 extendida a servicios en red: si ofreces el software como servicio web, debes publicar el código fuente a los usuarios. Ideal para SaaS que quiere evitar apropiación cerrada. |
+| **MIT** | Permissive | The simplest and most popular one: do whatever you want with the code, just keep the copyright notice. Maximum adoption, no patent clause. |
+| **Apache-2.0** | Permissive | Like MIT but with an explicit patent grant and protection against lawsuits; recommended for projects with patent implications or corporate backing. |
+| **BSD-3-Clause** | Permissive | Very close to MIT, adding a clause that forbids using the authors' names to promote derivatives without permission. |
+| **GPL-3.0** | Copyleft | Any derivative work must be distributed under the same license (open source is mandatory). It protects the software's freedom, but reduces commercial adoption. |
+| **AGPL-3.0** | Network copyleft | GPL-3.0 extended to network services: if you offer the software as a web service, you must publish the source code to its users. Ideal for SaaS that wants to avoid closed appropriation. |
 
-Tras imprimir la tabla, pregunta al usuario cuál elige y recuérdale que todos estos productos Open Source se entregan sin garantías (*no warranties*).
+After printing the table, ask the user which one they choose and remind them that all these open source products are delivered with *no warranties*.
 
-Las licencias Open Source aprobadas por la OSI más comunes son:
-- Permisivas: MIT, BSD, Apache 2.
-- Copyleft: producto derivado de un software, que debe tener su misma licencia o una con términos compatibles GPL v2, GPL v3. La licencia GPL es la más purista de la FSF, pero por lo tanto es menos probable que la tecnología con esta licencia sea adoptada.
-- Network copyleft: AGPL. Es una licencia copyleft que se aplica a software que se ejecuta en servidores y se accede a través de la red. Si los usuarios tienen acceso a la web con un servicio, tienen que tener también acceso al código fuente. Es básicamente un proyecto GPL + una API web. Para montar algo en la red, AGPL 3 es la más común para evitar el robo de software por otras empresas.
+The most common OSI-approved open source licenses are:
+- Permissive: MIT, BSD, Apache 2.
+- Copyleft: a product derived from a piece of software must carry the same license or one with GPL-compatible terms, such as GPL v2 or GPL v3. The GPL is the FSF's most purist license, which also makes technology under it less likely to be adopted.
+- Network copyleft: AGPL. A copyleft license that applies to software running on servers and accessed over the network. If users can reach a service over the web, they must also be able to reach the source code. It is essentially a GPL project plus a web API. For something deployed on the network, AGPL 3 is the most common choice to prevent other companies from appropriating the software.
 
-Hay que hacer hincapié en que todos los productos Open Source son no warranties.
+It is worth stressing that all open source products come with no warranties.
 
-Tendrá project license y REUSE-compliant licensing metadata.
+The result is a project license plus REUSE-compliant licensing metadata.
