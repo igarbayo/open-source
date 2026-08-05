@@ -1,0 +1,26 @@
+name: codeql
+permissions: read-all
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "30 6 * * 1"
+
+jobs:
+  analyze:
+    name: CodeQL (GitHub Actions)
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # This repository ships Markdown and JSON, so the only thing CodeQL has to
+      # analyse is the workflows themselves: injection through untrusted inputs,
+      # excessive permissions, unpinned actions.
+      - uses: github/codeql-action/init@5595ccaf912efad79be6eef63a5619ff05969be3 # v4
+        with:
+          languages: actions
+      - uses: github/codeql-action/analyze@5595ccaf912efad79be6eef63a5619ff05969be3 # v4
