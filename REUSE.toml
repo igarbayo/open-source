@@ -1,0 +1,29 @@
+version = 1
+
+SPDX-PackageName = "open-source"
+SPDX-PackageSupplier = "igarbayo <ignacio.garbayo@rai.usc.es>"
+SPDX-PackageDownloadLocation = "https://github.com/igarbayo/open-source"
+
+# The skill and its reference documents. `override` is deliberate: these files
+# quote SPDX tags inside code blocks as examples, and without it the linter
+# would read those placeholders as this repository's own licensing metadata.
+[[annotations]]
+path = ["SKILL.md", "references/**"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 igarbayo <ignacio.garbayo@rai.usc.es>"
+SPDX-License-Identifier = "MIT"
+
+# Repository documentation.
+[[annotations]]
+path = ["README.md", "README.es.md", "CHANGELOG.md"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 igarbayo <ignacio.garbayo@rai.usc.es>"
+SPDX-License-Identifier = "MIT"
+
+# Plugin and marketplace manifests, CI workflows, and this file. JSON admits no
+# comments, so the manifests cannot carry a header of their own.
+[[annotations]]
+path = [".claude-plugin/**", ".github/**", "REUSE.toml"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 igarbayo <ignacio.garbayo@rai.usc.es>"
+SPDX-License-Identifier = "MIT"

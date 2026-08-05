@@ -1,6 +1,7 @@
 # open-source
 
 [![skills.sh](https://skills.sh/b/igarbayo/open-source)](https://skills.sh/igarbayo/open-source)
+[![REUSE](https://api.reuse.software/badge/github.com/igarbayo/open-source)](https://api.reuse.software/info/github.com/igarbayo/open-source)
 
 **English** · [Español](README.es.md)
 
@@ -169,3 +170,5 @@ Questions, bugs or improvement ideas? Open an [issue on GitHub](https://github.c
 ## License
 
 This project is distributed under the [MIT](LICENSE) license. Like all open source software, it is provided **with no warranties of any kind**.
+
+The repository applies to itself the licensing metadata the skill generates: the full text lives in [LICENSES/MIT.txt](LICENSES/MIT.txt) and every file is attributed through [REUSE.toml](REUSE.toml), so `pipx run reuse lint` passes at the root.

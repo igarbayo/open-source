@@ -1,6 +1,7 @@
 # open-source
 
 [![skills.sh](https://skills.sh/b/igarbayo/open-source)](https://skills.sh/igarbayo/open-source)
+[![REUSE](https://api.reuse.software/badge/github.com/igarbayo/open-source)](https://api.reuse.software/info/github.com/igarbayo/open-source)
 
 [English](README.md) · **Español**
 
@@ -169,3 +170,5 @@ Si eliges un idioma distinto del inglés, la skill carga además `references/loc
 ## Licencia
 
 Este proyecto se distribuye bajo la licencia [MIT](LICENSE). Como todo software open source, se proporciona **sin garantías de ningún tipo** (*no warranties*).
+
+El repositorio se aplica a sí mismo los metadatos de licencia que genera la skill: el texto completo está en [LICENSES/MIT.txt](LICENSES/MIT.txt) y todos los archivos quedan atribuidos mediante [REUSE.toml](REUSE.toml), de modo que `pipx run reuse lint` pasa en la raíz.
