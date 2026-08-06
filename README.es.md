@@ -3,11 +3,7 @@
 [![skills.sh](https://skills.sh/b/igarbayo/open-source)](https://skills.sh/igarbayo/open-source)
 [![REUSE](https://api.reuse.software/badge/github.com/igarbayo/open-source)](https://api.reuse.software/info/github.com/igarbayo/open-source)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/igarbayo/open-source/badge)](https://scorecard.dev/viewer/?uri=github.com/igarbayo/open-source)
-<!-- OpenSSF Best Practices: descomentar cuando el proyecto esté registrado en
-     https://www.bestpractices.dev/ (entrar con GitHub → "Get your badge now"),
-     sustituyendo {{ID}} por el identificador numérico que asigna el sitio.
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/{{ID}}/badge)](https://www.bestpractices.dev/projects/{{ID}})
--->
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13965/badge)](https://www.bestpractices.dev/projects/13965)
 
 [English](README.md) · **Español**
 
